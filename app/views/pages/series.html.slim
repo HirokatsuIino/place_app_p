@@ -1,0 +1,64 @@
+.page.chronology
+  .page__header
+
+  .page__body
+    .center-align
+      div style="color: #4fb569; display: inline-block; width: 50%; min-width: 270px;"
+        h3.bold style="line-height: 2.3em; border-bottom: 5px solid #4fb569; margin-bottom: 10px;"
+          = "#{@user.nickname}さんの『学びログ年表』"
+        h4.bold style="text-align: right;"
+          = "総学びログ数 #{@total}件"
+
+    .margin-bottom-40px
+
+    ul
+      - @posts.each_with_index do |post, index|
+        li.chronology__post
+          .chronology__post__date
+            = @post_dates[index].html_safe
+
+          .chronology__post__circle
+
+          div style="padding-left: 30px; padding-bottom: 20px;"
+            = attachment_image_tag post.poster, :image, :fill, 80, 80, fallback: 'brand-logo.jpg', class: 'circle'
+
+            .chronology__post__name
+              = "#{post.poster.name_with_title}"
+
+            .margin-bottom-10px
+
+            .clearfix
+
+            .chronology__post__grade
+              span 学年
+              = @post_grade[index]
+
+            .chronology__post__prefecture
+              span 都道府県
+              = "#{post.poster.setting.prefecture_jp}"
+
+            .margin-bottom-10px
+
+            .clearfix
+
+            .chronology__post__comment
+              = simple_format(h("#{post.post_content.comment}"))
+
+            .chronology__post__content
+              .chronology__post__content__date
+                | 学習日時
+                p = post.post_content.study_date_jp
+
+              .chronology__post__content__time
+                | 学習時間
+                p = post.post_content.study_time_jp
+
+              .chronology__post__content__content
+                | 学習内容
+                p = simple_format(h(post.post_content.content))
+
+      li.chronology__post
+        .chronology__post__storylink
+          = link_to "🌸 #{@user.nickname}さんの合格体験記はこちら", @story_url
+
+        .chronology__post__circle

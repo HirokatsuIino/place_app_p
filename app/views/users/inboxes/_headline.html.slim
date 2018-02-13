@@ -1,0 +1,7 @@
+.post.tableview__cell
+  - if !message.read?
+    .post__colored_content
+      = render partial: 'content', locals: { message: message}
+  - else
+    .post__content
+      = render partial: 'content', locals: { message: message}

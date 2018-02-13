@@ -1,0 +1,75 @@
+.teacher-profile
+  = link_to student_path(@student)
+    .teacher-profile__image
+      = attachment_image_tag @student, :image, :fill, 128, 128, fallback: 'brand-logo.jpg', class: 'circle'
+
+  .teacher-profile__info
+    .teacher-profile__name
+      | #{@student.name_with_title}
+
+    .teacher-profile__senpre-id
+      | #{@student.senpre_id}
+
+    = render partial: 'setting', locals: { setting: @student.setting }
+
+  .teacher-profile__follow
+    .teacher-profile__follow-num
+      = link_to student_logs_path(@student)
+        .count
+          = @student.logs.count
+        .label
+          | 学びログ
+
+    .teacher-profile__follow-num
+      = link_to student_mypage_path(mode: 'like')
+        .count
+          = @student.likes.count
+        .label
+          | いいね
+
+  .clearfix
+
+  - if access_own_mypage? || current_user.admin?
+    .right.half.right-align
+      = link_to '月謝履歴を見る', student_monthly_fees_path(@student), class: 'button button--default full'
+
+      .margin-bottom-10px
+
+      - if @student.profile.present?
+        = link_to '学習プロフィールを見る', student_profile_path(@student), class: 'button button--default full'
+      - else
+        = link_to '学習プロフィールを書く', new_student_profile_path(@student), class: 'button button--default full'
+
+      .margin-bottom-10px
+      
+      /- if @student.repeat_lesson_teacher
+        = link_to '担当センセイのプロフィール', teacher_information_path(@student.repeat_lesson_teacher), class: 'button button--default full'
+      
+      /.margin-bottom-10px
+      
+      = link_to 'プロフィールの編集', edit_user_registration_path, class: 'button button--default full'
+
+      .margin-bottom-10px
+      
+      - if @student.provider.blank? && @student.lessons.present?
+        div
+          = image_tag 'twitter_logo_blue.png', height: 24
+          span style="font-weight:bold;" 連携はこちらから⤴️
+
+        - if @student.student_type.trial? && @student.student_type.position_class.trial_expired?
+          h4 = link_to 'お友達を招待する', payforwards_path
+
+      .margin-bottom-20px
+
+      = link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'button button--error full'
+
+  .clearfix.margin-bottom-20px
+
+.divider
+
+.tableview.timeline#post-list
+  = render partial: '/posts/post', collection: @posts
+
+- unless @posts.current_page >= @posts.total_pages
+  #read-more
+    = render partial: 'timelines/read_more'

@@ -1,0 +1,112 @@
+.estroy-user-interview
+  border-radius: 10px
+  padding: 30px 0 30px
+  
+  @include e(title)
+    font-size: 1.7em
+    padding: 30px 20px 20px
+    border-radius: 10px    
+
+  @include e(header)
+    width: 60px
+    margin-right: 10px
+    float: left
+
+    img
+      width: 70px
+
+  @include e(reviewer)
+    margin-bottom: 30px
+
+    @include e(name)
+      color: $gray-color-dark
+      font-weight: bold
+      font-size: 14px
+      margin-bottom: 10px
+      padding-left: 90px
+
+    @include e(info)
+      font-size: 13px
+      color: $gray-color-light
+      font-weight: bold
+      padding-left: 90px
+
+    @include e(title)
+      font-size: 1.2em
+      color: #6d6d6d
+      font-weight: bold
+      padding-bottom: 7px
+      
+    @include e(subtitle)
+      font-size: 1.0em
+      color: #6d6d6d
+      font-style: italic
+      font-weight: bold
+      padding-bottom: 7px
+        
+  @include e(content)
+    font-size: 14px
+    color: $gray-color-light
+    line-height: 1.8em
+    
+    br::before
+      content: "\A"
+      white-space: pre-wrap
+      
+    img
+        width: 90px
+
+@media screen and (min-width: 600px)
+  .estroy-user-interview
+    padding: 30px 20px 20px
+    border-radius: 10px
+
+    @include e(header)
+      font-size: 12px
+      float: left
+      width: 100px
+      text-align: center
+
+      img
+        width: 90px
+
+
+    @include e(body)
+      overflow: hidden
+
+    @include e(reviewer)
+      margin-bottom: 20px
+      font-size: 14px
+
+      @include e(name)
+        color: $gray-color-light
+        font-weight: bold
+        font-size: 14px
+        padding-left: 0
+
+        a
+          color: $gray-color
+
+      @include e(info)
+        color: $gray-color-light
+        font-size: 14px
+        padding-left: 0
+
+      @include e(title)
+        color: $gray-color-light
+        font-size: 1.2em
+        padding-left: 0
+        text-decoration: underline
+
+      @include e(subtitle)
+        color: #6d6d6d
+        font-size: 1.0em
+        font-style: italic
+        padding-left: 0
+
+    @include e(content)
+      margin-bottom: 20px
+      color: $gray-color-light
+      line-height: 2.0em
+      font-size: 14px
+

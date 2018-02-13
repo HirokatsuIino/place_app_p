@@ -1,0 +1,28 @@
+.page
+  .page__header #{@student.nickname}さんのサブ板を編集する
+
+  .page__body
+    .two_pane
+      .left_pane
+        = form_for [@student, @text_use], url: student_text_use_path(@student) do |f|
+          .form-section
+            = f.label :content
+            = f.text_area :content, rows: 6, data: { autoresize: '' }
+
+          = f.submit '更新する', class: 'button button--success full'
+
+      .right_pane
+        = render 'text'
+
+        .margin-bottom-50px
+
+        h4 上記のリスト内にない参考書を使用する場合は、下記フォームより、『科目：参考書名』をお送り下さい。リストに追加致します。
+        .margin-bottom-10px
+        = form_tag text_request_path, remote: true
+          = hidden_field_tag :teacher_id, current_user.id
+          = text_field_tag :text, '', placeholder: '英語『システム英単語』'
+          .margin-bottom-10px
+          .right-align
+            = submit_tag '追加', class: 'button button--default half'
+
+      .clearfix

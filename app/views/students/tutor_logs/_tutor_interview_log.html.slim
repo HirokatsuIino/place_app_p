@@ -1,0 +1,40 @@
+li
+  - if staff_signed_in?
+    - link = edit_student_tutor_log_path(@student, 0, log)
+  - else
+    - link = student_tutor_log_path(@student, 0, log)
+  = link_to link do
+    .list_view-container
+      .list_view-content
+        - title_item = log.tutor_log_items.where(tutor_log_item_master_id: 108).take
+        - if title_item.present?
+          p
+            | 面談タイトル
+            = simple_format(h(title_item.content))
+        - else
+          |
+        - content_item = log.tutor_log_items.where(tutor_log_item_master_id: 110).take
+        - if content_item.present?
+          p
+            | 面談内容
+            = simple_format(h(content_item.content))
+        - else
+          |
+
+        - if staff_signed_in?
+          p
+            | サイクルレベル
+            = log.log_level.cycle_level
+            br
+            | 指導レベル
+            = log.log_level.lesson_level
+            br
+            | 学びログレベル
+            = log.log_level.log_level
+            br
+            | 週レポレベル
+            = log.log_level.report_level
+            .margin-bottom-20px
+
+        | 作成日
+        = log.created_at.to_s(:date)

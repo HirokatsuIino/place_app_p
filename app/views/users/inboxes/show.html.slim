@@ -1,0 +1,7 @@
+.page
+  .page__header
+    | 受信箱
+
+  .page__body
+    .tableview
+      = render partial: 'headline', collection: @messages, as: :message

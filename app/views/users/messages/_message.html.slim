@@ -1,0 +1,28 @@
+.post.tableview__cell
+  .post__content
+    .post__image
+      = message.link_to_user(attachment_image_tag(message.from_user, :image, :fill, 64, 64, fallback: 'brand-logo.jpg', class: 'circle'))
+
+    .post__name
+      - if message.from_user_id == 0
+        | センプレ
+      - else
+        = message.link_to_user(message.from_user.nickname)
+          - if message.from_user.teacher?
+            | センセイ
+
+    .clearfix
+
+    .post__body
+      = url_to_link(simple_format(message.content)).html_safe
+
+    - message.images.each do |image|
+      .post__image
+        = link_to attachment_image_tag(image, :image, :fill, 64, 64, fallback: ''), attachment_url(image, :image, format: 'jpg'), target: :_blank
+
+      .clearfix
+
+    .post__time
+      - if current_user != message.to_user
+        = message.read? ? ' 既読 ' : ''
+      = l(message.created_at)

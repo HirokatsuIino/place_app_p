@@ -1,0 +1,102 @@
+.profile
+  .popup
+    - if current_user.student?
+      = i.label :preferred_school
+    - else
+      .popup__title--info
+        = i.label :preferred_school
+      .popup__content 志望校情報（志望校を決めたのはいつか。受験勉強を本格的に始めたのはいつか）
+    = i.text_area :preferred_school, rows: 1, data: { autoresize: '' }
+
+  .popup
+    = i.label :preferred_school_reason
+    = i.text_area :preferred_school_reason, rows: 1, data: { autoresize: '' }
+
+  .popup
+    = i.label :hobby
+    = i.text_area :hobby, rows: 1, data: { autoresize: '' }
+
+  .popup
+    = i.label :club
+    = i.text_area :club, rows: 1, data: { autoresize: '' }
+
+  .popup
+    - if current_user.student?
+      = i.label :learning
+    - else
+      .popup__title--info
+        = i.label :learning
+      .popup__content 過去(中学生以降)の他社利用状況を詳しく(塾や予備校の場合、時期と具体的な形態や教科)
+    = i.text_area :learning, rows: 1, data: { autoresize: '' }
+
+  .popup
+    - if current_user.student?
+      = i.label :school
+    - else
+      .popup__title--info
+        = i.label :school
+      .popup__content 過去の受験経験を詳しく（高校受験は、第一志望校に合格してるか。浪人生の場合、現役時の受験はどこを受けてどうだったか）
+    = i.text_area :school, rows: 1, data: { autoresize: '' }
+
+  .popup
+    = i.label :grade
+    = i.text_area :grade, rows: 1, data: { autoresize: '' }
+
+  .popupn
+    = i.label :study_type
+    = i.text_area :study_type, rows: 1, data: { autoresize: '' }
+
+  .popup
+    = i.label :subjects
+    = i.text_area :subjects, rows: 1, data: { autoresize: '' }
+
+  .popup
+    = i.label :favorite_subjects
+    = i.text_area :favorite_subjects, rows: 1, data: { autoresize: '' }
+
+  .popup
+    = i.label :dislike_subjects
+    = i.text_area :dislike_subjects, rows: 1, data: { autoresize: '' }
+
+  .popup
+    = i.label :test
+    = i.text_area :test, rows: 1, data: { autoresize: '' }
+
+  .popup
+    = i.label :level
+    br
+    = i.radio_button :level, 5
+    = i.label :level_5
+    = i.radio_button :level, 4
+    = i.label :level_4
+    = i.radio_button :level, 3
+    = i.label :level_3
+    = i.radio_button :level, 2
+    = i.label :level_2
+    = i.radio_button :level, 1
+    = i.label :level_1
+
+  .popup
+    - if current_user.student?
+      = i.label :goal
+    - else
+      .popup__title--info
+        = i.label :goal
+      .popup__content 志望校と現時点のギャップを今どう感じているか（山登りトーク）
+    = i.text_area :goal, rows: 1, data: { autoresize: '' }
+
+  .popup
+    - if current_user.student?
+      = i.label :problem
+    - else
+      .popup__title--info
+        = i.label :problem
+      .popup__content
+        | 学習の課題や悩みを詳しく（本人記載情報よりも具体化する。上げられるだけ沢山上げる）
+        br
+        | 今回あげた学習の課題や悩みは、今現在の環境（塾・予備校、学校、独学など）で何故解消できていないと思うか詳しく
+    = i.text_area :problem, rows: 1, data: { autoresize: '' }
+
+  .popup
+    = i.label :comment
+    = i.text_area :comment, rows: 1, data: { autoresize: '' }

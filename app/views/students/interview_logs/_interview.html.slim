@@ -1,0 +1,13 @@
+.tableview__cell.clearfix
+  = link_to send("student_#{interview.class.name.underscore}_path", interview.student, interview) do
+    .timeline__image
+      = attachment_image_tag interview.try(:teacher), :image, :fill, 64, 64, fallback: 'brand-logo.jpg', class: 'circle'
+
+    .timeline__study-content.margin-bottom-10px
+      = "【#{interview.interview_log_type}】"
+      br
+      = "作成者 : #{interview.teacher.nickname if interview.class == InterviewLog && interview.teacher}"
+      br
+      = "作成日時 : #{interview.created_at.to_s(:datetime_jp)}"
+      br
+      = "体験候補日 : #{interview.interview_log_item.try(:trial_date) if interview.class == InterviewLog && interview.interview_log_item}"

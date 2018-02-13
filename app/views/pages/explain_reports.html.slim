@@ -1,0 +1,57 @@
+.center-align
+  .margin-bottom-20px
+  h2.bold style="color: #4B8968; display: inline; padding: 10px 5px 8px; border-bottom: 5px solid #4B8968;"
+    | 週間レポートの書き方
+
+.margin-bottom-30px
+
+= image_tag 'how_to_report.jpg', style: 'width: 100%;'
+
+.post
+  .tableview__cell style="font-size: 13px;"
+    | ※ 週間レポートは通常は非公開情報で担当のセンセイにのみ通知されますが、下記は書き方の参考のためにご本人の了承のもと公開しています。
+
+  - @reports.each do |report|
+    .tableview__cell.tableview--divider
+      .timeline__image
+        = attachment_image_tag report.student, :image, :fill, 80, 80, fallback: 'brand-logo.jpg', class: 'circle'
+
+      .timeline__name
+        = "#{report.student.name_with_title}"
+
+      .timeline__senpre-id
+        = "@#{report.student.senpre_id}"
+
+      .clearfix
+
+      .timeline__body
+        div
+          h4 = report.date
+
+          .margin-bottom-10px
+
+          h3 よかったこと、続けたいこと
+          p
+            = simple_format(h(report.keep))
+
+          .margin-bottom-20px
+
+          h3 課題点
+          p
+            = simple_format(h(report.problem))
+
+          .margin-bottom-20px
+
+          h3 次の一週間の目標&プラン
+          p
+            = simple_format(h(report.trying))
+
+          .margin-bottom-20px
+
+          h3 聞きたいこと、話したいこと
+          p
+            = simple_format(h(report.topic))
+
+          h3 自己評価
+          p
+            = '⭐️' * report.review.to_i

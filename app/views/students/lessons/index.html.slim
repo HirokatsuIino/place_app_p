@@ -1,0 +1,229 @@
+.page
+  - if teacher_signed_in?
+    .page__title
+      h3= "#{@student.nickname}さんの指導・受験情報"
+
+  .page__body
+    .segmented-control
+      .segmented-control__item.segmented-control__item--colums-2.active#item-1
+        = link_to '指導情報', '#'
+      .segmented-control__item.segmented-control__item--colums-2#item-2
+        = link_to '受験情報', '#'
+
+    .margin-bottom-10px
+
+    #item-1-content
+      - if current_user == @student || (teacher_signed_in? && current_user.coaching?(@student)) || staff_signed_in?
+        - if @student.lessons.normal
+          = render partial: 'lesson_rate'
+
+      = render partial: 'lessons', locals: { lessons: @lessons }
+      = render partial: 'repeat_lessons', locals: { repeat_lessons: @repeat_lessons }
+      .margin-bottom-20px
+      = link_to '受講履歴・過去の週間レポート編集', student_past_lessons_path(@student), class: 'button button--success full'
+
+    #item-2-content style="#{student_signed_in? ? 'display: none;' : ''}"
+      - if student_signed_in?
+        div style="width: 95%; font-size: 12px; text-align: right;"
+          | (このページはセンセイ以外は閲覧できません)
+
+      .button-group style="font-size: 13px;"
+        = link_to '受験校一覧', '#exam_schools', class: 'button-flat button-flat--success'
+        = link_to '模試ログ一覧', '#trial_test_logs', class: 'button-flat button-flat--success'
+        = link_to '過去問ログ一覧', '#kakomon_logs', class: 'button-flat button-flat--success'
+
+      .margin-bottom-10px
+
+      .panel.shadow#exam_schools
+        .panel__header
+          | 受験校一覧
+          span style="font-size: 12px; margin-left: 20px;"
+            - if teacher_signed_in?
+              span style="margin-left: 105px;" ※ 受験結果はセンセイのみ入力(必須)、生徒には非表示
+
+        .panel__body
+          - if student_signed_in?
+            = link_to '受験校を入力', new_student_yomikos_exam_school_log_path(@student), class: 'button button--success full'
+            .margin-bottom-20px
+
+          table
+            thead
+              tr
+                th 受験予定校
+                th 試験日程
+                th 合格発表日
+                - if teacher_signed_in?
+                  th 受験結果
+                th width="120px"
+            tbody.center-align
+              - @exam_school_logs.each do |log|
+                tr
+                  td style="text-align: left;"
+                    = log.exam_school
+                    - if teacher_signed_in? && @unread_exam_school_logs.include?(log.id)
+                      span.badge
+                  td = log.exam_date
+                  td = log.announce_date
+                  - if student_signed_in?
+                    td
+                      = link_to '編集', edit_student_yomikos_exam_school_log_path(@student, log), class: 'button button--default button--minimum full'
+                      br
+                      = link_to '削除', student_yomikos_exam_school_log_path(@student, log), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'button button--error button--minimum full'
+                  - else
+                    td = log.result
+                    td
+                      - if log.result.present?
+                        = link_to '受験結果を編集', edit_student_yomikos_exam_school_log_path(@student, log), class: 'button button--default button--minimum full'
+                      - else
+                        = link_to '受験結果を入力', edit_student_yomikos_exam_school_log_path(@student, log), class: 'button button--success button--minimum full'
+
+      .panel.shadow#trial_test_logs
+        .panel__header
+          | 模試ログ一覧
+          br
+          - if teacher_signed_in?
+            span style="font-size: 12px;"
+              | ※ ここでの成績に関する項目はセンセイ以外には公開されません
+              br
+              | ※ 感想については、学びログとして公開されます
+        .panel__body
+          - if student_signed_in?
+            = link_to '模試予定を入力', new_student_yomikos_trial_test_log_path(@student), class: 'button button--success full'
+          - else
+            = link_to '模試ログを一覧で見る', student_yomikos_trial_test_logs_path(@student), class: 'button button--success full'
+
+          .margin-bottom-20px
+
+          table
+            thead
+              tr
+                th width="70px;" 実施(予定)日
+                th width="70px;" 模試名
+                th width="70px;" 形態
+                th width="70px;" 総合偏差値
+                - if teacher_signed_in?
+                  th 自己採点
+                th width="100px;"
+            tbody.center-align
+              - @trial_test_logs.each do |trial_test_log|
+                tr class=(trial_test_log.carried_out ? '' : 'not_result')
+                  td
+                    - if teacher_signed_in? && @unread_trial_test_logs.include?(trial_test_log.id)
+                      span.badge 未読
+                    = trial_test_log.season_jp
+                  td= trial_test_log.name
+                  td= trial_test_log.test_type_jp
+                  td= trial_test_log.total_deviation_value
+                  - if teacher_signed_in?
+                    td
+                      - if trial_test_log.self_grading.present?
+                        = simple_format(h(trial_test_log.self_grading))
+                      - else
+                        |
+                  td
+                    - if student_signed_in?
+                      - if trial_test_log.carried_out && (trial_test_log.total_deviation_value.present? || trial_test_log.each_deviation_value.present? || trial_test_log.judgment.present?)
+                        = link_to '詳細', student_yomikos_trial_test_log_path(@student, trial_test_log), class: 'button button--default full'
+                      - elsif trial_test_log.carried_out && (trial_test_log.self_grading.present? || trial_test_log.impression.present?)
+                        = link_to '結果入力', edit_student_yomikos_trial_test_log_path(@student, trial_test_log, result: true), class: 'button button--warning full'
+                      - else
+                        = link_to '自己採点結果入力', edit_student_yomikos_trial_test_log_path(@student, trial_test_log), class: 'button button--success full', style: 'line-height: 1.5em;'
+                    - else
+                      = link_to '詳細', student_yomikos_trial_test_log_path(@student, trial_test_log), class: 'button button--default full'
+
+          - if student_signed_in?
+            .margin-bottom-20px
+            = link_to '模試ログを一覧で見る', student_yomikos_trial_test_logs_path(@student), class: 'button button--success full'
+
+      .panel.shadow#kakomon_logs
+        .panel__header
+          | 過去問ログ一覧
+          br
+          - if teacher_signed_in?
+            span style="font-size: 12px;"
+              | ※ ここでの成績に関する項目はセンセイ以外には公開されません
+              br
+              | ※ 感想については、学びログとして公開されます
+
+        .panel__body
+          - if student_signed_in?
+            = link_to '過去問予定を入力', new_student_yomikos_kakomon_log_path(@student), class: 'button button--success full'
+          - else
+            = link_to '過去問ログを一覧で見る', student_yomikos_kakomon_logs_path(@student), class: 'button button--success full'
+
+          .margin-bottom-20px
+
+          table
+            thead
+              tr
+                th 実施(予定)日
+                th 大学名学部
+                th 年度
+                th 教科
+                th 正解数
+                th 点数
+                th
+            tbody.center-align
+              - @kakomon_logs.each do |log|
+                tr class=(log.carried_out ? '' : 'not_result')
+                  td
+                    - if teacher_signed_in? && @unread_kakomon_logs.include?(log.id)
+                      span.badge 未読
+                    = log.season_jp
+                  td = log.college
+                  td = log.questions_year
+                  td = log.subject
+                  - if student_signed_in?
+                    - if log.impression.present?
+                      td style="text-align: left;"
+                        = simple_format(h(log.correct))
+                      td style="text-align: left;"
+                        = simple_format(h(log.point))
+                    - else
+                      td colspan="2" = link_to '結果入力', edit_student_yomikos_kakomon_log_path(@student, log), class: 'button button--success full'
+                  - else
+                    - if log.impression.present?
+                      td style="text-align: left;"
+                        = simple_format(h(log.correct))
+                      td style="text-align: left;"
+                        = simple_format(h(log.point))
+                    - else
+                      td
+                      td
+                  td = link_to '詳細', student_yomikos_kakomon_log_path(@student, log), class: 'button button--default full'
+
+          - if student_signed_in?
+            .margin-bottom-20px
+            = link_to '過去問ログを一覧で見る', student_yomikos_kakomon_logs_path(@student), class: 'button button--success full'
+
+javascript:
+  $(document).on('ready page:load hashchange', function() {
+    var hashValue = location.hash
+    if (hashValue) {
+      show_2();
+    } else {
+      show_1();
+    }
+    $('#item-1').on('click', show_1);
+    $('#item-2').on('click', show_2);
+  })
+
+  function show_1() {
+    $('#item-1-content').show()
+    $('#item-2-content').hide()
+    $('#item-1').addClass('active')
+    $('#item-2').removeClass('active')
+    location.hash = ''
+    return false
+  }
+
+  function show_2() {
+    $('#item-2-content').show()
+    $('#item-1-content').hide()
+    $('#item-1').removeClass('active')
+    $('#item-2').addClass('active')
+    if (!location.hash) {
+      location.hash = '#exam'
+    }
+    return false
+  }

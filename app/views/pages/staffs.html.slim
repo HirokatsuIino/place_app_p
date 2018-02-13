@@ -1,0 +1,20 @@
+.staff
+  .staff-list
+    .center-align
+      h2 センセイプレイス公式LINE＠サポートチーム
+
+    .center-align
+      p 無料受験相談受付中！気軽に相談してください！
+
+    .margin-bottom-20px
+
+    - @profiles.keys.each do |user_id|
+      = link_to staff_path(user_id) do
+        .staff-list__teacher.center-align.margin-bottom-20px
+          .staff-list__photo
+            = image_tag @profiles[user_id].image, class: 'circle'
+
+          .staff-list__graduate
+            = @profiles[user_id].name
+
+    .clearfix

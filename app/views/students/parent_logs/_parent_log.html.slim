@@ -1,0 +1,34 @@
+.margin-bottom-20px
+
+- if parent_log.published_at.nil?
+  h2.red 下書き
+
+  .margin-bottom-20px
+
+h2 #{parent_log.prev_parent_log_number+1}回目保護者面談ログ
+
+.margin-bottom-20px
+
+- [:recent_news, :keep, :problem, :try, :question, :last_greeting, :comment].each do |attribute|
+  h4= ParentLog.human_attribute_name(attribute)
+  p= parent_log.send(attribute)
+  .margin-bottom-20px
+
+- [:parent, :relation, :lesson, :prevent_withdrawal, :exam_schools, :mindset].each do |attribute|
+  h4= ParentLog.human_attribute_name(attribute)
+  p= parent_log.send("#{attribute}_jp")
+
+  .margin-bottom-20px
+
+p= "作成日 #{parent_log.created_at.to_s(:date)}"
+
+- if teacher_signed_in?
+  = link_to '編集する', edit_student_parent_log_path(@student, parent_log), class: 'button button--success quater right'
+
+  .margin-bottom-20px.clearfix
+
+  = link_to '削除する', student_parent_log_path(@student, parent_log), method: :delete, data: { confirm: '削除してもよろしいですか？' }, class: 'button button--error quater right'
+
+  .margin-bottom-20px.clearfix
+
+.divider

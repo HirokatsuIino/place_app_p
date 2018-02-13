@@ -1,0 +1,33 @@
+.page
+  .page__header
+    | 学びログ
+
+  .page__body
+    .post__image
+      = attachment_image_tag @log.student, :image, :fill, 64, 64, fallback: 'brand-logo.jpg', class: 'circle'
+
+    .post__study-date.margin-bottom-5px
+      p= @log.study_date_jp
+
+    .post__study-time.margin-bottom-10px
+      | 学習時間
+      p= @log.study_time_jp
+
+    .post__study-content.margin-bottom-10px
+      | 学習内容
+      p= simple_format(h(@log.content))
+
+    .post__study-comment.margin-bottom-10px
+      | 今日の学び、発見、ふりかえり
+      p= simple_format(h(@log.comment))
+
+    .post__study-create.margin-bottom-10px
+      | #{l(@log.created_at)}
+
+    - if @log.images.present?
+      - @log.images.each do |image|
+        = link_to attachment_url(image, :image) do
+          = attachment_image_tag image, :image, :fill, 64, 64
+
+    = link_to '編集する', edit_student_log_path(@log.student, @log), class: 'button button--success full margin-bottom-10px'
+    = link_to '削除する', student_log_path(@log.student, @log), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'button button--error full'

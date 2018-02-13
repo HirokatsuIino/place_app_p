@@ -1,0 +1,13 @@
+.page
+  .page__header 学習プロフィールを記入する（タイムラインには非公開）
+  .page__body
+    = form_for @profile, url: student_profile_path, method: :patch do |f|
+      - if @profile.student_profile_item.present?
+        = f.fields_for :student_profile_item, @profile.student_profile_item do |i|
+          = render 'form', i: i
+      - else
+        .form-section
+          = f.label     :free_content
+          = f.text_area :free_content, rows: 12, data: { autoresize: '' }
+
+      = f.submit '保存する', class: 'button button--success full', data: { disable_with: '保存中...' }

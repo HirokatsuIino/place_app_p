@@ -1,0 +1,152 @@
+// Vendor
+
+@import normalize-rails
+@import font-awesome
+
+// Application
+
+@import ../lib/functions
+@import ../lib/mixins
+
+$base-color: #333
+
+// Base
+
+body
+  font-size: 90%
+
+label
+  display: inline-block
+  margin-bottom: 8px
+  color: whiten($base-color, 20%)
+  font-size: 100%
+
+input[type=text],
+input[type=email],
+input[type=password],
+textarea
+  display: block
+  width: 100%
+  margin-bottom: 8px
+  padding: 8px
+  border: 1px solid whiten($base-color, 90%)
+  border-radius: 2px
+  color: whiten($base-color, 20%)
+  font-size: 75%
+
+  &:focus
+    outline: none
+
+input[type=text],
+input[type=email],
+input[type=password],
+textarea
+  -webkit-appearance: none
+
+  &:focus
+    background-color: whiten($base-color, 95%)
+
+input[type=checkbox]
+  margin-right: 4px
+
+textarea
+  height: 120px
+
+// Layout
+
+.l-header
+  padding: 16px 20px
+  border-bottom: 1px solid whiten($base-color, 90%)
+
+.l-main
+  +clearfix
+
+.l-nav
+  float: left
+  width: 180px
+
+.l-content
+  margin: 20px 0 0 180px
+
+// Module
+
+.header
+  &-logo
+    color: whiten($base-color, 20%)
+    text-decoration: none
+
+.nav
+  list-style: none
+  margin: 16px 20px
+  padding: 0
+  border-right: 1px solid whiten($base-color, 90%)
+
+  a
+    color: whiten($base-color, 20%)
+    font-size: 90%
+    text-decoration: none
+
+// Component
+
+.button
+  display: inline-block
+  outline: none
+  padding: 8px 20px
+  border: none
+  border-radius: 2px
+  background-color: transparent
+  color: #fff
+  font-size: 80%
+  text-align: center
+  text-decoration: none
+  vertical-align: middle
+  transition: 200ms
+
+  &:hover
+    text-decoration: none
+
+  &-default
+    border: 1px solid whiten($base-color, 90%)
+    background-color: #fff
+    color: whiten($base-color, 20%)
+
+    &:hover
+      border-color: darken(whiten($base-color, 90%), 5%)
+      background-color: darken(#fff, 5%)
+
+.form
+  margin: 0
+
+  &-section
+    margin-bottom: 8px
+
+.row
+  &-480px
+    width: 480px
+
+.table
+  font-size: 90%
+
+  th,
+  td
+    padding: 8px
+    border: 1px solid whiten($base-color, 90%)
+    color: whiten($base-color, 20%)
+
+  th
+    background-color: whiten($base-color, 95%)
+    color: whiten($base-color, 50%)
+    font-weight: normal
+
+  a
+    color: whiten($base-color, 20%)
+
+    &:hover
+      text-decoration: none
+
+  &-nav
+    a
+      margin-right: 4px
+
+      &:last-child
+        margin: 0

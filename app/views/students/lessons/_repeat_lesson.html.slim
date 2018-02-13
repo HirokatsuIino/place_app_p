@@ -1,0 +1,8 @@
+tr
+  td= link_to repeat_lesson.teacher_nickname, repeat_lesson.teacher
+  td= "#{repeat_lesson.lesson_datetime.to_s(:wday_jp)}"
+  td
+    = "#{repeat_lesson.lesson_start_time.to_s(:time)}"
+    | から
+    = "#{repeat_lesson.lesson_end_time.to_s(:time)}"
+    = "(#{repeat_lesson.lesson_total_time}分)"

@@ -1,0 +1,82 @@
+.tutor_log
+  h3 【第1回目】センプレサイクル&指導の受け方&学びログ
+
+  .log_items
+    h4 <第1回ガイダンスのゴール>
+    = render 'tutor_log_item', name: 'goal_for_first_tutor_lesson',  number: 1, f: f
+
+  .log_items
+    h4 <指導前準備>
+    = render 'tutor_log_item', name: 'conscious',  number: 1, f: f
+    = render 'tutor_log_item', name: 'talk_about', number: 1, f: f
+
+  .log_items
+    h4 1️⃣ 導入
+    = render 'tutor_log_item', name: 'self_introduction', number: 1, f: f
+    = render 'tutor_log_item', name: 'ice_break', number: 1, f: f
+    = render 'tutor_log_item', name: 'memo', number: 1, f: f
+    = render 'tutor_log_item', name: 'explain_for_tutor_lesson', number: 1, f: f
+    = render 'tutor_log_item', name: 'resume', number: 1, f: f
+
+  .log_items
+    h4 2️⃣ センプレサイクルについて
+    = render 'tutor_log_item', name: 'about_senpure_cycle', number: 1, f: f
+
+  .log_items
+    h4 3️⃣ 指導について
+    = render 'tutor_log_item', name: 'about_lesson', number: 1, f: f
+    = render 'tutor_log_item', name: 'about_lesson_level', number: 1, f: f
+    = render 'tutor_log_item', name: 'self_review_for_lesson', number: 1, f: f
+
+  .log_items
+    h4 4️⃣ 指導前の準備の仕方
+    = render 'tutor_log_item', name: 'reread_log', number: 1, f: f
+
+  .log_items
+    h4 5️⃣ 指導中の注意点とコツ
+    = render 'tutor_log_item', name: 'honesty', number: 1, f: f
+    = render 'tutor_log_item', name: 'attempt', number: 1, f: f
+
+  .log_items
+    h4 6️⃣ 指導後にやるべきこと
+    = render 'tutor_log_item', name: 'write_log', number: 1, f: f
+
+  .log_items
+    h4 7️⃣ 指導の受け方の目標設定
+    = render 'tutor_log_item', name: 'goal_for_lesson', number: 1, f: f
+
+  .log_items
+    h4 8️⃣ 学びログについて
+    = render 'tutor_log_item', name: 'about_log', number: 1, f: f
+    = render 'tutor_log_item', name: 'good_for_log', number: 1, f: f
+    = render 'tutor_log_item', name: 'log_level', number: 1, f: f
+    = render 'tutor_log_item', name: 'self_review_for_log', number: 1, f: f
+    = render 'tutor_log_item', name: 'tutor_comment_for_log', number: 1, f: f
+
+
+  .log_items
+    h4 9️⃣ 学びログの目標設定
+    = render 'tutor_log_item', name: 'log_goal', number: 1, f: f
+
+  .log_items
+    h4 🔟 指導内容のまとめと振り返り
+    = render 'tutor_log_item', name: 'goal_achivement', number: 1, f: f
+    = render 'tutor_log_item', name: 'chemistry', number: 1, f: f
+    = render 'tutor_log_item', name: 'tutor_feedback', number: 1, f: f
+
+  .log_items
+    h4 <指導後振り返り>
+    = render 'tutor_log_item', name: 'tutor_review', number: 1, f: f
+    = render 'tutor_log_item', name: 'comment_to_teacher', number: 1, f: f
+
+  .margin-bottom-20px
+  = render 'log_level', f: f
+
+  .margin-bottom-20px
+
+  - if action_name != 'show'
+    = f.submit '保存する', class: 'button button--success full'
+
+    .margin-bottom-20px
+
+    = f.submit '下書き保存する', name: 'draft_button', class: 'button button--sub full'

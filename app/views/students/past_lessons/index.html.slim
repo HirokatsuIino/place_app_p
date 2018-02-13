@@ -1,0 +1,16 @@
+.page
+  .page__header
+    h4 これまでの指導
+
+  .page__body
+    table
+      thead
+        tr
+          th タイプ
+          th センセイ名
+          th 指導日
+          th 時間帯
+          th 週間レポート
+
+      tbody
+        = render partial: 'lesson', collection: @lessons

@@ -1,0 +1,7 @@
+.page
+  .page__header #{@student.nickname}さんのヨミ校情報を作成する
+
+  .page__body
+    = form_for [@student, @yomiko] do |f|
+      = render 'form', f: f
+      = f.submit '作成する', class: 'button button--success full'

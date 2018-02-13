@@ -1,0 +1,16 @@
+.panel.shadow#reserved_lessons
+  .panel__header
+    | これからの指導
+
+  .panel__body
+    table
+      thead
+        tr
+          th 指導種別
+          th センセイ名
+          th 指導日
+          th 時間帯
+          th
+
+      tbody
+        = render partial: 'lesson', collection: lessons

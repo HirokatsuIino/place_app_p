@@ -1,0 +1,62 @@
+.prev_parent_logs.document_content
+  - @student.parent_logs.order(created_at: :desc).each do |log|
+    .margin-bottom-20px
+
+    .parent_greeting_log_content
+
+    .margin-bottom-20px
+
+    .divider
+
+  - @student.parent_greeting_logs.order(created_at: :desc).each do |log|
+    .margin-bottom-20px
+
+    .parent_greeting_log_content
+      h4= log.created_at.to_s(:date)
+      .margin-bottom-10px
+
+      h4 センプレで働いている理由
+      = simple_format(h(log.working_reason))
+      .margin-bottom-10px
+
+      h4 担当になった理由
+      = simple_format(h(log.coaching_reason))
+      .margin-bottom-10px
+
+      h4 ほかの生徒の指導経験
+      = simple_format(h(log.experience))
+      .margin-bottom-10px
+
+      h4 生徒に対しての客観的な印象や認識の伝達
+      = simple_format(h(log.student_impression))
+      .margin-bottom-10px
+
+      h4 生徒に関して、保護者より伝えておきたいこと
+      = simple_format(h(log.about_student))
+      .margin-bottom-10px
+
+      h4 センプレ相談窓口についてのアナウンス
+      = simple_format(h(log.announce))
+      .margin-bottom-10px
+
+      h4 保護者含めチームとしてやっていきたい意思の伝達
+      = simple_format(h(log.team))
+      .margin-bottom-10px
+
+      h4 今後の定期面談の依頼
+      = simple_format(h(log.about_interview))
+      .margin-bottom-10px
+
+    .margin-bottom-20px
+
+    .divider
+
+sass:
+  .prev_parent_logs
+    display: none
+
+  .parent_log_content
+    font-size: 14px
+
+  .parent_greeting_log_content
+    font-size: 14px

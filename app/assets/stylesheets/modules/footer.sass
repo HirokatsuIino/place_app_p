@@ -1,0 +1,27 @@
+.footer
+  font-size: 70%
+
+  ul
+    @include list-with-no-space
+    overflow: auto
+
+  li
+    float: left
+    width: 50%
+    border-right: 1px solid whiten($base-color, 90%)
+    border-bottom: 1px solid whiten($base-color, 90%)
+
+    &:nth-child(2n)
+      border-right: none
+
+  a
+    display: block
+    padding: 8px 10px
+    color: whiten($black-color, 20%)
+    text-decoration: none
+
+  p
+    margin: 0
+    padding: 12px 0
+    color: whiten($black-color, 50%)
+    text-align: center

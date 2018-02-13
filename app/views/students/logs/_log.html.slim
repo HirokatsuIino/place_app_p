@@ -1,0 +1,20 @@
+.tableview__cell.clearfix
+  = link_to student_log_path(log.student, log) do
+    .timeline__image
+      = attachment_image_tag log.student, :image, :fill, 64, 64, fallback: 'brand-logo.jpg', class: 'circle'
+
+    .timeline__study-date.margin-bottom-5px
+      p= log.study_date_jp
+
+    .timeline__study-time.margin-bottom-10px
+      | 学習時間
+      p= log.study_time_jp
+
+    .timeline__study-content.margin-bottom-10px
+      | 学習内容
+      p= truncate(log.content, length: 64)
+
+    .timeline__study-comment.margin-bottom-10px
+      | 今日の学び、発見、ふりかえり
+      p= truncate(log.comment, length: 64)
+

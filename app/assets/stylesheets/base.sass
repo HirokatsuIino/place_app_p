@@ -1,0 +1,261 @@
+*
+  box-sizing: border-box
+
+html
+  font-size: initial
+  height: 100%
+
+
+body
+  position: absolute
+  top: 0
+  bottom: 0
+  left: 0
+  right: 0
+  max-width: 640px
+  margin: auto
+  color: $gray-color
+  background-color: $white-color
+  border-right: 1px solid #e0e0e0
+  border-left: 1px solid #e0e0e0
+  font-family: Hiragino Sans, 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', 'YuGothic', '游ゴシック', 'メイリオ', Meiryo, Osaka, 'ＭＳ Ｐゴシック', 'SimSun', 'Microsoft YaHei', sans-serif !important
+
+.admin_view
+  position: relative
+  max-width: 1400px
+  height: auto
+  min-height: 100%
+
+
+.wrapper
+  position: relative
+  width: 100%
+  height: auto
+  min-height: 100%
+
+.container
+  word-wrap : break-word
+  overflow-wrap : break-word
+
+.scoll
+  overflow: auto
+  white-space: nowrap
+
+a
+  color: $gray-color
+  text-decoration: none
+
+  &:visited
+    color: $gray-color
+
+  &:hover
+    color: $gray-color
+
+p
+  margin: 0
+  padding: 0
+
+input[type=checkbox]
+  margin-right: 4px
+
+[data-role=sidemenu-content]
+  margin: 0
+  padding: 0
+
+[data-role=sidemenu]
+  .login-button
+    width: 50%
+    text-align: center
+
+  .register-button
+    width: 50%
+    height: 44px
+    text-align: center
+    color: #F5A623 !important
+
+.field_with_errors
+  display: inline
+
+h1, h2, h3, h4, h5, h6
+  margin: 0
+  padding: 0
+
+ul, ol
+  margin: 0
+  padding: 0
+
+h1.pf
+  font-size: 60px
+  text-align: center
+
+p.pf
+  font-size: 20px
+  text-align: center
+
+p.center
+  text-align: center
+
+p.center_small
+  font-size: 15px
+  text-align: center
+
+.payforward
+  font-weight: bold
+
+.bold
+  font-weight: bold
+
+p.centerbold
+  text-align: center
+  font-weight: bold
+
+p.centerboldmobile
+  text-align: center
+  font-weight: bold
+  float: left
+p#aaa
+  position: relative
+span#cent
+  position: absolute
+  top: 0
+  left: 0
+  width: 100%
+  text-align: center
+  font-weight: bold
+span#right
+  position: absolute
+  top: 0
+  left: 0
+  width: 100%
+  text-align: right
+
+
+.nobold_alignright
+  font-weight: normal
+  font-size: 12px
+
+ul.sns
+  display: table
+  width: 100%
+  table-layout: fixed
+  list-style: none
+ul.sns li
+  display: table-cell
+ul.sns li a
+  display: block
+
+div.sns
+  width: 100%
+  height: 104px
+  margin-bottom: 10px
+
+.sns div
+  width: 100%
+  margin-bottom: 0px
+  padding: 6px 0
+  float: left
+  font-size: 18px
+  font-weight: bold
+  color: #ffffff !important
+  text-align: center
+  display: inline-block
+  text-decoration: none
+
+.sns div:hover
+  color: #ffffff
+  text-decoration: none
+  opacity: 0.6 !important
+
+.sns .share_mail
+  background-color: #DDDDDD
+.sns .share_tw
+  background-color: #55acee
+.sns .share_bookmark
+  background-color: #008FDE
+.sns .share_line
+  background-color: #00c300
+
+div
+  #lsf-icon
+    color: white
+
+.lsf-icon.line:before
+  content: '\E157'
+
+.lsf-icon.mail:before
+  content: '\E08a'
+
+.lsf-icon.twitter:before
+  content: '\E12f'
+
+.scroll
+  overflow: scroll
+
+@font-face
+  font-family: 'glyphicons-halflings'
+  src: asset-url('glyphicons-halflings-regular.eot')
+  src: asset-url('glyphicons-halflings-regular.eot?#iefi') format('embedded-opentype')
+
+@font-face
+  font-family: 'LigatureSymbols'
+  src: url('LigatureSymbols-2.11.eot')
+  src: asset-url('LigatureSymbols-2.11.eot?#iefix') format('embedded-opentype')
+  src: asset-url('LigatureSymbols-2.11.woff')format('woff')
+  src: asset-url('LigatureSymbols-2.11.ttf') format('truetype')
+  src: asset-url('LigatureSymbols-2.11.svg#LigatureSymbols') format('svg')
+  font-weight: normal
+  font-style: normal
+
+.lsf
+  font-family: 'LigatureSymbols'
+  -webkit-text-rendering: optimizeLegibility
+  -moz-text-rendering: optimizeLegibility
+  -ms-text-rendering: optimizeLegibility
+  -o-text-rendering: optimizeLegibility
+  text-rendering: optimizeLegibility
+  -webkit-font-smoothing: antialiased
+  -moz-font-smoothing: antialiased
+  -ms-font-smoothing: antialiased
+  -o-font-smoothing: antialiased
+  font-smoothing: antialiased
+  -webkit-font-feature-settings: "liga" 1, "dlig" 1
+  -moz-font-feature-settings: "liga=1, dlig=1"
+  -ms-font-feature-settings: "liga" 1, "dlig" 1
+  -o-font-feature-settings: "liga" 1, "dlig" 1
+  font-feature-settings: "liga" 1, "dlig" 1
+
+.lsf-icon:before
+  content: attr(title)
+  margin-right: 0.3em
+  font-size: 130%
+  font-family: 'LigatureSymbols'
+  -webkit-text-rendering: optimizeLegibility
+  -moz-text-rendering: optimizeLegibility
+  -ms-text-rendering: optimizeLegibility
+  -o-text-rendering: optimizeLegibility
+  text-rendering: optimizeLegibility
+  -webkit-font-smoothing: antialiased
+  -moz-font-smoothing: antialiased
+  -ms-font-smoothing: antialiased
+  -o-font-smoothing: antialiased
+  font-smoothing: antialiased
+  -webkit-font-feature-settings: "liga" 1, "dlig" 1
+  -moz-font-feature-settings: "liga=1, dlig=1"
+  -ms-font-feature-settings: "liga" 1, "dlig" 1
+  -o-font-feature-settings: "liga" 1, "dlig" 1
+  font-feature-settings: "liga" 1, "dlig" 1
+
+  a.lsf-icon
+  color: white
+
+//.left
+  text-align: left
+
+.navy
+  color: #000080
+
+.red
+  color: #E3725E
+
+::placeholder
+  color: #999

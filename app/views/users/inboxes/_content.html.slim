@@ -1,0 +1,43 @@
+- if message.other_user(@user)
+  = link_to user_messages_path(message.other_user(@user)) do
+    .post__image
+      = attachment_image_tag message.other_user(@user), :image, :fill, 64, 64, fallback: 'brand-logo.jpg', class: 'circle'
+
+    .post__name
+      = message.other_user(@user).nickname
+
+    .clearfix
+
+    .post__body
+      = simple_format(truncate(message.content, length: 40))
+
+    - message.images.each do |image|
+      .post__image
+        = attachment_image_tag(image, :image, :fill, 64, 64, fallback: '')
+
+      .clearfix
+
+    .post__time
+      = l(message.created_at)
+
+- else
+  = link_to user_messages_path(0) do
+    .post__image
+      = attachment_image_tag nil, :image, :fill, 64, 64, fallback: 'brand-logo.jpg', class: 'circle'
+
+    .post__name
+      | センプレ
+
+    .clearfix
+
+    .post__body
+      = url_to_link(simple_format(message.content)).html_safe
+
+    - message.images.each do |image|
+      .post__image
+        = attachment_image_tag(image, :image, :fill, 64, 64, fallback: '')
+
+      .clearfix
+
+    .post__time
+      = l(message.created_at)

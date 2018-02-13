@@ -1,0 +1,164 @@
+.parents
+  .ceo
+    = image_tag 'ceo.png', class: 'full'
+
+    .ceo__info
+      .ceo__title
+        | センプレ代表
+
+      .ceo__name
+        | 庄司裕一
+
+  .margin-bottom-20px
+
+  .center-align.margin-bottom-20px
+    h1.bold style="display: inline; padding: 0 5px 8px"
+      | 保護者の方へ
+
+  p.center-align
+    | 「センプレが自分の子どもに
+    br
+    | 合うのか知りたい」
+
+  p.center-align
+    | 「勉強のやり方に特化した指導が
+    br
+    | いまいちピンとこない」
+
+  p
+    | スカイプもしくはお電話にて、代表の庄司からご説明を差し上げています。センプレを通じて、中高生がどのように日々成長しているのかをご紹介したいと思います。
+
+  p
+    | 下部のフォームからお気軽にお問い合わせください。
+
+  .voice
+    .center-align.margin-bottom-20px
+      h2.bold style="display: inline; padding: 0 5px 8px"
+        | 保護者の方の声
+
+    .margin-bottom-20px
+
+    p.center-align
+      | 多くの方がお子様のたしかな成長を
+      br
+      | 実感なさっています
+
+    .voice__example
+      .voice__example__image
+        = image_tag 'mother.png', width: '40'
+
+      .voice__example__quote
+        = image_tag 'quote.png', width: '15'
+
+      .voice__example__title
+        | スキマ時間も勉強するように
+
+      .voice__example__info
+        | 高校３年生・女子のお母様
+
+      .clearfix
+
+      .margin-bottom-10px
+
+      .voice__example__content
+        | 「なにから始めていいかわからない」と足踏み状態を続けていた娘。そんな娘が、センプレを始めてからはちょっとしたスキマ時間も大事に勉強するように。指導中は彼女の笑い声が聞こえてきます。センセイは、彼女の「拠り所」になっているようです。
+
+
+    .voice__example
+      .voice__example__image
+        = image_tag 'mother.png', width: '40'
+
+      .voice__example__quote
+        = image_tag 'quote.png', width: '15'
+
+      .voice__example__title
+        | 自分で考えて進めるように
+
+      .voice__example__info
+        | 高校３年生・男子のお母様
+
+      .clearfix
+
+      .margin-bottom-10px
+
+      .voice__example__content
+        | 自分なりに勉強に対して仮説を立てて、チェックして、改善するということをやるようになりました。その様子を見ていて“すごいな”と思いました。これまででいちばん楽しく勉強している気がします。ようやく“自分からやってみよう”としていると思います。
+
+    .voice__example
+      .voice__example__image
+        = image_tag 'mother.png', width: '40'
+
+      .voice__example__quote
+        = image_tag 'quote.png', width: '15'
+
+      .voice__example__title
+        | 塾を嫌がる子供がセンプレだけは楽しみにしている
+
+      .voice__example__info
+        | 高校２年生・男子のお母様
+
+      .clearfix
+
+      .margin-bottom-10px
+
+      .voice__example__content
+        | 塾も家庭教師も避けてきた彼が、どうしてセンプレの時間は楽しみにしているのかなあ？と考えてみました。それは、センセイの人としての温かさに触れる時間であり、人間味あふれる温かい指導のお陰だと思います。どんなに優秀なセンセイでも人間的に魅力がなければ、子供はついていかないのだと思います。
+
+    .voice__example
+      .voice__example__image
+        = image_tag 'mother.png', width: '40'
+
+      .voice__example__quote
+        = image_tag 'quote.png', width: '15'
+
+      .voice__example__title
+        | 親子喧嘩がなくなりました
+
+      .voice__example__info
+        | 高校１年生・女子のお母様
+
+      .clearfix
+
+      .margin-bottom-10px
+
+      .voice__example__content
+        | センプレを始める前は、学習の進め方に関して、親の私が口出しをするたびに親子喧嘩になっていました。今はセンプレのセンセイが見てくださっているので喧嘩がなくなり、親子共々ストレスが減った。自発的に勉強するようになったと思う。
+
+  .margin-bottom-20px
+
+  .parents__inquiry
+   .center-align.margin-bottom-20px style="padding: 0 20px;"
+      h1.bold style="display: inline; padding: 0 5px 8px"
+        | お問い合わせ
+
+      .margin-bottom-20px
+
+      = form_for @inquiry do |f|
+        .form-section.left-align
+          = f.label      :name
+          = f.text_field :name
+
+        .form-section.left-align
+          = f.label :subject
+          | ＊
+
+          = f.select :subject, { 'センプレ利用前のご相談について' => 'センプレ利用前のご相談について',
+            '無料体験指導について' => '無料体験指導について',
+            '新規生徒登録について' => 'ポイント購入について',
+            'ポイント購入について' => 'ポイント購入について',
+            'センプレ生/トライアル生の方' => 'センプレ生/トライアル生の方',
+            'メディア関係者の方' => 'メディア関係者の方',
+            'ウェブサイトの不具合のご報告' => 'ウェブサイトの不具合のご報告',
+            'その他のお問い合わせ' => 'その他のお問い合わせ'}, { prompt: '選択してください' }, { class: 'selectbox' }
+
+        .form-section.left-align
+          = f.label      :email
+          | ＊
+
+          = f.text_field :email
+
+        .form-section.left-align
+          = f.label     :message
+          = f.text_area :message, data: { autoresize: '' }
+
+        = f.submit '送信', class: 'button button--confirm full', data: { disable_with: '送信中...' }

@@ -1,0 +1,11 @@
+.page
+  .page__header
+    = attachment_image_tag @student, :image, :fill, 64, 64, fallback: 'brand-logo.jpg', class: 'circle', style: 'margin-right: 20px;'
+    = "#{@student.nickname}さんのサポーター指導ログ一覧"
+
+  .page__body
+    - if staff_signed_in?
+      = link_to '新規作成する', new_student_tutor_log_path(@student, 0), class: 'button button--success full', style: 'margin-left: 10px;'
+
+    ul.list_view.list_view-thumbnail
+      = render partial: 'tutor_interview_log', collection: @student.tutor_logs.interview_log.order(created_at: :desc), as: :log

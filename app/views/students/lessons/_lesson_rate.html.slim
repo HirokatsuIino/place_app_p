@@ -1,0 +1,24 @@
+.panel.shadow#reserved_lessons
+  .panel__body
+    table#no-border
+      thead
+        - month_range = (Time.zone.now - 1.month)..(Time.zone.now - 1.day)
+        tr
+          th colspan="4"
+            | 直近1ヶ月
+            br
+            = month_range.begin.to_s(:date) + " (#{month_range.begin.to_s(:wday_jp)}) "
+            | 〜
+            = month_range.last.to_s(:date) + " (#{month_range.last.to_s(:wday_jp)})"
+        tr
+          th colspan="2" width="50%" 学びログ率
+          th colspan="2" width="50%" 週レポ率
+      tbody
+        tr style="text-align: center;"
+          - rate = StudentFactRate.new(@student, month_range)
+          td width="25%" style="border-right-style: dashed; #{'color: red;' if rate.log.alert?}" = rate.log.to_s(:fraction)
+          td width="25%" style="border-left: none; #{'color: red;' if rate.log.alert?}" = rate.log.to_s(:percent)
+          td width="25%" style="border-right-style: dashed;"
+            = link_to rate.report.to_s(:fraction), student_student_reports_path(@student), style: "#{'color: red;' if rate.report.alert?}"
+          td width="25%" style="border-left: none; #{'color: red;' if rate.report.alert?}"
+            = link_to rate.report.to_s(:percent), student_student_reports_path(@student), style: "#{'color: red;' if rate.report.alert?}"

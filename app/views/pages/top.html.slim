@@ -1,0 +1,526 @@
+.front
+  .dropdown
+    .dropdown-btn
+      | センセイプレイスとは？
+      .right
+        = image_tag 'white-arrow.svg', width: '10px'
+
+    ul.dropdown__content
+      li= link_to '会社概要',                   'http://company.senseiplace.com/info'
+      li= link_to 'センセイプレイスとは？',     root_path(anchor: 'front__about')
+      li= link_to 'センセイプレイスのこだわり', root_path(anchor: 'front__customize')
+
+  .dropdown
+    .dropdown-btn
+      | 生徒の声
+      .right= image_tag 'white-arrow.svg', width: '10px'
+
+    ul.dropdown__content
+      = link_to '合格体験記',           story_path
+      = link_to '１ヶ月体験記', experience_notes_path
+      = link_to '無料体験生の声',       reviews_path
+      = link_to '生徒インタビュー動画', root_path(anchor: 'voice__interview')
+
+  .dropdown
+    .dropdown-btn
+      | NEWS
+      .right= image_tag 'white-arrow.svg', width: '10px'
+
+    ul.dropdown__content
+      = link_to 'メディア', 'http://weekly.ascii.jp/elem/000/000/377/377798/'
+      = link_to 'http://blog.senseiplace.com/' do
+        = 'ブログ'
+        span.new 新着!
+      = link_to 'https://www.youtube.com/channel/UC_yS1nGnAGe0gMiSKVDHN1g' do
+        = 'YouTube'
+        span.new 新着!
+
+  .dropdown
+    .dropdown-btn
+      | お問い合わせ
+      .right= image_tag 'white-arrow.svg', width: '10px'
+
+    ul.dropdown__content
+      = link_to '一般の方',     'http://company.senseiplace.com/contact'
+      = link_to '保護者の方',   parents_path
+      = link_to '操作について', new_feedback_path
+      = link_to 'LINEから',     'https://line.me/R/ti/p/%40rnj8936a'
+
+  div style="line-height: 0"
+    = image_tag 'flipboard1.png', class: 'full'
+
+  .full.center-align.green-background
+    .tagline
+      h1
+        p
+          | 学び方が変われば
+          br
+          | 人生が変わる
+
+    .trial-button
+      = link_to trial_path do
+        = image_tag 'trial_btn_1.svg', width: '190'
+
+  div style="line-height: 0"
+    = image_tag 'flipboard2.png', class: 'full'
+
+  //.news.center-align
+    | NEWS‼️
+
+  //  .news__content
+      = link_to 'http://weekly.ascii.jp/elem/000/000/377/377798/' do
+        | 週刊アスキーにセンプレの取材記事が掲載されました
+
+  .front__manifesto
+    .center-align
+      h2
+        | センセイプレイスの
+        br
+        | 「学び方」革命宣言
+
+    .center-align
+      h4.colored 頑張ってるのに成果が出ないのはなぜ？
+      p
+        | 世の中には「やすやすと成果を出している人」がいる。
+        br
+        | その一方で「頑張ってるのに成果がでない人」がいる。
+
+      p
+        | この両者の違いは何なのか？
+
+      p
+        | １０００人以上の受験生と向き合って
+        br
+        | たどり着いたひとつの答えは
+        br
+        span.emphasis 『学び方の違い』
+
+  .front__content
+    h2 「自分にぴったりの学び方」ができない受験生
+
+    h4 探し求めているようなゴールへの１本道は存在しない
+
+    p
+      | 今時の受験生はたいてい勉強法を検索している。
+      br
+      | 魅力的な勉強法や参考書プランを仕入れると、すぐにでも偏差値が上がりそうな気がしてくる。
+
+    p
+      | でも、実際に机に向かってみれば分かるけれど、成績や偏差値は、そんなに簡単には上がらない。
+
+    p
+      | 困った受験生は、焦り、あたらしい勉強法をまた探しはじめる。
+      br
+      | まるで、誰も知らない「魔法のルート（勉強法）」がどこかに落ちているかのように。
+
+    p
+      | インターネットで語られる無数の勉強法は、それを書いた人が成功した「その人のやり方」にすぎない。
+
+    p
+      | 一人ひとりの受験生は、現在地も違えばゴールも違う。
+      br
+      | 性格も、環境も、ライフスタイルも、学ぶ力も、すべて違う。
+      br
+      | そうした「違い」を無視して人の勉強法を真似しても、人のやり方が自分にぴったりはまることは決してない。
+
+    p
+      | 人のやり方を「参考」にするのは大切。
+      br
+      | でも、本物の「自分にぴったりの学び方」は自分の手でつくりあげていくしかないのだ。
+
+    .margin-bottom-50px
+
+    h2 「自分にぴったりの学び方」を身につける方法
+
+    h4 ゴールまでの道は自分で切り開くじぐざぐ道
+
+    p
+      | ゴールまでの一本道は存在しないのだから、自分にとっての最短ルートは自分でつくるしかない。
+      br
+      | 成功した受験生一人ひとりの最短ルートを振り返ると、一人ひとりがまったく違った「じぐざぐ道」を切り拓いている。
+
+    p
+      | でも、実は、成功者が通った「じぐざぐ道」には、その道の切り拓き方にひとつの「共通点」がある。
+
+    p.emphasis
+      | 「ゴールから逆算して、計画を立て、
+      br
+      | 今の自分の現状を客観的にみて、
+      br
+      | 必要なこととそのやり方を決め、
+      br
+      | そして実際に行動してみた結果をもとに
+      br
+      | さらに自分に合ったものを決定する」
+
+    p
+      | これを繰り返すことで、山の頂上にたどりついている。
+      br
+      | だからこそ成功者は誰もが「一本道」ではなく「じぐざく道」を切り拓いている。
+
+    p
+      | "自分にぴったりの学び方"を自分で更新し続けるからこそ、だれもが驚く成長と成功が実現できるのだ。
+
+    .center-align
+      = image_tag 'routes', width: '100%'
+
+  .front__about#front__about
+    .center-align
+      h2 センセイプレイスとは
+
+    h3 勉強法をカスタマイズする、オンラインコーチ
+
+    p
+      | センセイプレイスは専属コーチがあなたと一緒に学び方をカスタマイズし続ける。
+      br
+      | 「カスタマイズ」をすることで、「自分にぴったりの学び方」が見つかり、迷いなく勉強できる。
+      br
+      | だからこそ、頑張れば頑張った分だけ成果が出る。
+      br
+      | やった分だけ成果が出れば、自然ともっと頑張りたくなる。
+
+    p
+      | この好循環に入れば、学ぶことにワクワクしてくる。
+      br
+      | やらされる勉強が、自分からやりたくなる学びに変わる。
+
+    p
+      | これまでの常識を１８０度くつがえす
+      br
+      | まったく新しい学びのフィールドに、ようこそ。
+
+  .front__customize#front__customize
+    h2 センセイプレイスのこだわり
+    h3
+      | 「自分で学び方をカスタマイズすること」に徹底してこだわった独自の指導スタイル
+    ul
+      li
+        .blue_colored.bold 1. 入試本番まで専属のセンセイがマンツーマンで担当！
+        p 一人ひとりに合わせた「学び方のカスタマイズ」を実現するために、専属のセンセイがマンツーマンで担当。なんでも相談できるセンセイが入試本番まで伴走する。
+      li
+        .blue_colored.bold 2. 週7日、年365日のフルサポート
+        p 生徒の学習状況を、専属のセンセイが週７日・年３６５日でフルサポート。生徒が毎日投稿する学習レポートに対して、センセイが毎日チェックし、アドバイスをする。
+      li
+        .blue_colored.bold 3. 毎週60分間のマンツーマンSkype指導
+        p 毎日のチェックに加えて、毎週固定で60分間のSkypeマンツーマン指導を実施。生徒とセンセイが二人で一緒に課題や悩みを洗い出し解決していく「対話型指導」で、迷わず学習を進められる。
+      li
+        .blue_colored.bold 4. センセイの採用基準は「難関大の合格者」＋「人間力」
+        p センセイは全員が「難関大学出身者」。東京大学・早稲田大学を中心に、学力だけではなく、深いコミュニケーションができる「人間力」を兼ね備えた人だけを選抜。
+      li
+        .blue_colored.bold 5. オンラインだから日本全国どこからでも
+        p 日々のアドバイスも、指導も、すべてをスマホ１つで。また、地方の高校生が早稲田出身のセンセイにサポートを受けることが可能になったり、自宅で指導を受けられるので部活で忙しい高校生も安心して利用できる。
+
+  //.front__staff
+    h2 馬場祐平
+
+  //.front__profile
+    p 1983年12月生まれ。起業家、「共育」実践家、作家、プログラマー。
+    p （私立）中学中退・公立高校中退の後、中退の原因となった「ゲームへの没頭経験」を活かした勉強法を研究し、約半年間の独学で早稲田大学政治経済学部に合格。
+    p 「高校中退するまで全科目赤点・学年ビリだった自分が、学び方を変えて独学しただけで急激に成績を上げられたのに、なぜ大多数の人は苦労して学校や塾に通って受験勉強しても成績が上がらないのだろうか」という疑問が、その後の教育への関わりの原点となる。
+    p
+      | 大学在学中の2003年に
+      = link_to '「早稲田への道」', 'http://babayuhei.sakura.ne.jp/r2wsd/'
+      | と題した独自の勉強法をインターネットで公開。大きな反響があったのをきっかけに、2007年に「落ちこぼれの人生を変える塾（道塾）」を立ち上げる。塾長として6年間で1,000名超を指導し、
+      = link_to '「ゲームにハマるように受験勉強に没頭する」独自の学習法', 'https://www.amazon.co.jp/dp/4334975801'
+      | によって、早稲田大学やMARCHを中心に、国公立大学も含めて数多くの受験生を逆転合格に導く。
+    p
+      | その活動は新聞・テレビ・雑誌で取り上げられ（朝日新聞・読売新聞・毎日新聞、NHK・フジテレビ・読売テレビほか）、様々な高校や大学でも講師として講演活動を行う。母校である早稲田大学の看板授業「大隈塾」では、現首相・安倍晋三氏を含む総理大臣経験者をはじめとした著名講師陣と並び、
+      = link_to '若い起業家・教育変革家として講師を務めた', 'https://www.youtube.com/watch?v=Y7hWziE1Olo'
+      | 。しかし「有名大学に受からせることだけを目的とした受験塾を続けても教育は変えられない」と考えて2013年に自ら塾を閉じる。
+    p
+      | 塾を閉じてから、日本の外側の世界の変化を肌で感じるために、ASEAN全10カ国を旅して経済と教育の発展状況を実地に学んだ後、
+      = link_to '日本の教育から変革しよう', 'http://www.crazylearners.net/founder/'
+      | と決意する。帰国後の2014年、教育変革の実現には
+      = link_to '自分が「教育」と「テクノロジー」を身につけることが必要だ', 'http://30ruby.hatenablog.com/entry/2014/09/25/131300'
+      | と考え、教育学を独学して東京大学大学院教育学研究科に合格し、続けてプログラミング（Ruby）を独学して、当初の決意から約半年後に
+      = link_to 'センセイプレイスの原型となるサービスをリリース', 'http://30ruby.hatenablog.com/entry/2014/11/01/030505'
+      | する。
+    p
+      | 2015年4月に「教育（Education）×テクノロジー（Technology）」の領域の本命たる教育事業として、
+      = link_to '「センセイを芯から応援する」というビジョン', 'http://30ruby.hatenablog.com/entry/2015/04/09/151334'
+      | を掲げてセンセイプレイスを共同創業。創業パートナーは大学時代からの盟友である
+      = link_to '庄司裕一（現センセイプレイスCEO）', 'http://company.senseiplace.com/#team'
+      | 。
+    p
+      | 現在はセンセイプレイスCLO「学びの責任者（L=Learning）」として、一人ひとりの可能性を最大限に引き出すために現場に立ち、指導法と学習法の研究＆実践を最前線で行っている。
+    p
+      | 著作
+      = link_to '『受験はゲーム』', 'https://www.amazon.co.jp//dp/4334975801'
+      | (2009)、
+      = link_to '『学欲』', 'https://www.amazon.co.jp/dp/B00AGYNQHE/'
+      | (2012)、
+      = link_to '『独学宣言』', 'https://www.amazon.co.jp/dp/B00C9SEJ1M/'
+      | (2013)
+    p
+      | ブログ
+      = link_to ' 「学欲日誌」', ''
+      | 、Twitter
+      = link_to ' センセイ垢（@babayuhei）', ''
+      | 、
+      = link_to 'Facebook', ''
+
+  //.margin-bottom-50px
+
+  //.front__message
+    h4 馬場祐平より
+    h5 「一人ひとり生き方が違えば学び方も違う」
+    p
+      | これまでの学校や塾は「正解」を教えてくれる場所だった。
+      br
+      | でも、インターネットがある現代においては
+      br
+      | 「正解」はGoogleが教えてくれる。
+      br
+      | だから、昔と変わらない「正解を覚えるだけの勉強」に
+      br
+      | インターネット世代の若者は飽き飽きしている。
+      br
+      だって、それが自分の人生に必要ないと直感するから。
+
+  //  p
+      | 「受験という仕組みがあるから、
+      br
+      | 勉強しなきゃいけないのはわかってる」けど、
+      br
+      | どうしてもモチベーションが上がらない。
+      br
+      | だからうまくいかなくて、焦りがつのるばかり。
+      br
+      | 高校に通っていた頃の僕も、そんな空回りの中にいた。
+      br
+      | そして勉強に飽きて、諦めて、高校を辞めた。
+
+  //  p
+      | そこから色々あって、今に至る中で僕が学んだこと。
+
+  //  p
+      | 一人ひとりの「生き方」に正解がない現代においては、
+      br
+      | 同じように一人ひとりの「学び方」にも正解はない。
+      br
+      | だから、学校が教えてくれる「正解」に頼らずに、
+      br
+      | 自分で「生き方」や「学び方」をつくっていくことが大切だ。
+
+  //  p
+      | 若い人は、それが自分の人生に必要なことだと直感できる。
+      br
+      | その瞬間、若い人は自分の可能性に目覚めて、心に火がつく。
+
+  //  p
+      | 残念ながら、今はそのやり方を学校や塾が教えてくれない。
+      br
+      | （これからセンセイプレイスが伝え広めていく）
+      br
+      | その間にも若者は無防備なままどんどん世に送り出される。
+      br
+      | だからセンセイプレイスでは、受験という機会を活かして
+      br
+      | 「自分にぴったりの学び方を、自分でつくっていく」
+      br
+      | という経験が今すぐにできる場をつくった。
+
+  //  p
+      | 「自分にぴったりの学び方」を身につけることができれば、
+      br
+      | ゲームにハマるように目の前の物事に没頭していける。
+      br
+      | そうすれば、結果として成績はもちろん伸びていく。
+      br
+      | でも、僕たちがいちばん大切にしたいのは、その先のことだ。
+      br
+      | 受験を通じて学び取ったことは、その後の人生の基盤となる。
+
+  //  p
+      | 「一人ひとり生き方が違えば学び方も違う」。
+      br
+      | それに気がつければ、決して自分の可能性を諦めなくてすむ。
+
+  //  p
+      | 僕たちは今を生きる一人ひとりの可能性を引き出すために、
+      br
+      | これまでの教育とはまったく異なる
+      = link_to '「学びの環境」', 'https://medium.com/pass2try/gamification-by-senseiplace-bb905e48ca9f'
+      | をつくり、
+      br
+      | 新しい学びの形である
+      = link_to '「共育」', 'https://docs.google.com/document/d/11l8Ys-Kv9Augbs_j0KpvAFwvpiE-v5ClxkO0Jd3zk7w/edit'
+      | の創造に取り組んでいます。
+
+//= link_to story_path do
+  = image_tag 'story_banner.png', style: 'width: 100%;'
+
+.voice__interview#voice__interview
+  = content_tag(:iframe, '', src: "https://www.youtube.com/embed/I6hVYoHGrxg?rel=0&amp;controls=0&amp;showinfo=0", frameborder: "0", allowfullscreen: true)
+
+.margin-bottom-30px
+
+.goukaku
+  h2.colored 卒業生の合格体験記
+  .goukaku__wrapper
+    div style="margin: 0 auto; max-width: 100%; min-width: 160px;"
+      .goukaku__student
+        = link_to 'http://company.senseiplace.com/taikenkis' do
+          = image_tag 's_takeda.jpg', class: 'circle', width: '150px'
+          p.bold
+            | 偏差値40台から早稲田へ
+            br
+            | 逆転合格
+          p Sくん
+          = image_tag 'story-detail.png', width: '100%'
+
+      .goukaku__student
+        = link_to 'http://company.senseiplace.com/taikenkisakura' do
+          = image_tag 'story02.jpg', class: 'circle', width: '150px'
+          p.bold
+            | 勉強時間0だった私が
+            br
+            | 夢の早稲田へ
+          p さくらさん
+          = image_tag 'story-detail.png', width: '100%'
+
+      .goukaku__student
+        = link_to 'https://senseiplace.squarespace.com/taikenkiimura' do
+          = image_tag 'story03.jpeg', class: 'circle', width: '150px'
+          p.bold
+            | 非進学校から現役で
+            br
+            | 関大へ逆転合格！
+          p 井村くん
+          = image_tag 'story-detail.png', width: '100%'
+
+      .goukaku__student
+        = link_to 'https://senseiplace.squarespace.com/taikenkitongari' do
+          = image_tag 'story04.jpeg', class: 'circle', width: '150px'
+          p.bold
+            | 「無理だ」と笑われた状況から中央へ
+          p とんがりくん
+          = image_tag 'story-detail.png', width: '100%'
+
+      .clearfix
+
+.margin-bottom-50px
+
+//.trial
+  h2.colored 無料体験指導
+
+  h3 無料体験者の声
+
+  .trial__example
+    = image_tag 'student_91.png', width: '100', class: 'circle left'
+
+    .trial__example__title
+      | 「自分でも出来そう！」と思えた
+
+    .margin-bottom-10px
+
+    .trial__example__info
+      | 高校2年生・Lisaさん
+
+    .clearfix
+
+    .margin-bottom-10px
+
+    .trial__example__content
+      | 勉強計画を立てても、いつも失敗ばかりしていました。でも無料体験を通じて「こうすればいいんだ」が分かり、やるべきことが明確になりました！
+
+  .margin-bottom-20px
+
+  .trial__example
+    .trial__image
+      = image_tag 'student_22.png', width: '100', class: 'circle left'
+
+    .trial__example__title
+      | 勉強のスタイルが変わった
+
+    .margin-bottom-10px
+
+    .trial__example__info
+      | 高校３年生・とんがりさん
+
+    .clearfix
+
+    .margin-bottom-10px
+
+    .trial__example__content
+        | 勉強への考え方が変わりました！センセイはかなり向き合ってくれます。受験の枠ではなく、もっと大きな視野を持って勉強に取り組んでいくべきだと感じました。
+
+  .margin-bottom-20px
+
+  = link_to reviews_path do
+    .trial__read-more
+      | もっと見る
+
+  .margin-bottom-40px
+
+  h3 体験実施までの流れ
+
+  .trial__content__flow
+    ul
+      li.first-step
+        | STEP1
+
+        .trial__content__flow__step
+          | LINE@で友達追加
+
+      li.second-step
+        | STEP2
+
+        .trial__content__flow__step
+          | 日程調整
+
+      li.third-step
+        | STEP3
+
+        .trial__content__flow__step
+          | 事前カウンセリング
+
+      li.forth-step
+        | STEP4
+
+        .trial__content__flow__step
+          | 無料
+          br
+          | 体験指導
+
+      .clearfix
+
+.margin-bottom-20px
+
+
+= link_to 'price' do
+  .about_price
+    h2 料金について
+    .center-align style="margin-bottom: 10px; margin-top: 10px;"
+      h4 詳しくはこちらから ➡️
+
+.trial-button.center-align style="background-color: #009944; padding: 30px 0 15px"
+  = link_to trial_path do
+    = image_tag 'trial_btn_2.svg', width: '240'
+
+
+.margin-bottom-20px
+
+.clearfix
+
+.sns_links
+  .center-align
+    h2 ソーシャルメディア
+
+  div style="display: table; margin: 0 auto;"
+    = link_to 'https://www.youtube.com/channel/UC_yS1nGnAGe0gMiSKVDHN1g' do
+      .sns_links__elem
+        = image_tag 'YouTube-Icon.png', width: '50px'
+        | YouTube
+
+    = link_to 'https://line.me/R/ti/p/%40rnj8936a' do
+      .sns_links__elem
+        = image_tag 'LINE_Icon.png', width: '50px'
+        | LINE
+
+    = link_to 'http://blog.senseiplace.com' do
+      .sns_links__elem
+        = image_tag 'Blog_Icon.jpg', width: '50px'
+        | ブログ
+
+.clearfix

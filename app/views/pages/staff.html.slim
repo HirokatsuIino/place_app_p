@@ -1,0 +1,25 @@
+.staff-profile
+  .staff-profile__photo
+    = image_tag @profile.image, class: 'circle'
+
+  .staff-profile__name
+    = @profile.name
+
+  .margin-bottom-10px
+
+  table
+    tbody
+      tr
+        td 出身大学
+        td= @profile.college
+      tr
+        td 出身地
+        td= @profile.prefecture
+      tr
+        td 趣味
+        td= @profile.hobby
+      tr
+        td 一言
+        td= @profile.comment
+
+  .clearfix

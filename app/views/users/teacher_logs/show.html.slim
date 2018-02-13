@@ -1,0 +1,29 @@
+.page
+  .page__header
+    | 指導ログ
+
+  .page__body
+    ul.list_view.list_view-thumbnail
+      li
+        = attachment_image_tag @teacher_log.teacher, :image, :fill, 64, 64, fallback: 'brand-logo.jpg'
+
+        .list_view-container
+          .list_view-content
+            p= @teacher_log.self_score
+
+          .list_view-content
+            = simple_format(h(@teacher_log.log_content))
+          br
+          .list_view-content
+            = simple_format(h(@teacher_log.saved_content))
+
+            - if @teacher_log.images.present?
+            .list_view-content
+              - @teacher_log.images.each do |image|
+                = link_to attachment_url(image, :image) do
+                  = attachment_image_tag image, :image, :fill, 64, 64
+
+          .list_view-attributes.is-bottom
+            span= l(@teacher_log.created_at)
+
+            = link_to '編集する', edit_user_teacher_log_path(@user, @teacher_log)

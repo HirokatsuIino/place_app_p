@@ -1,0 +1,233 @@
+.parent_log
+  span.tooltip data-tooltip-content="#tooltip_content_point" ポイント ℹ️
+  .tooltip_templates
+    span.tooltip_content#tooltip_content_point
+      ul
+        li
+          | ご挨拶面談とは違い、完全に
+          span.red 対話形式
+          | 。「①センセイが議題を頭出しして生徒に話を振る」→「②親にそれについて意見を求める」→「③センセイがいい感じにまとめて次の質問へ」という流れで対応する。センセイは司会役を務める。
+        li
+          | 「良かった点」、「課題点」、「今後の目標・展望（受験校の共有など含む）」について話すので、センセイはそれぞれの項目について、
+          span.red 指導準備の段階で自分なりにまとめておこう
+          | 。
+        li
+          | まとめた内容は、保護者面談開始前に、大まかにでいいので
+          span.red 「今日はこんな風に話すね」と生徒に伝えておこう
+          | 。そのほうが、生徒も安心して面談に臨むことができるので、協力的な姿勢をとりやすくなる。
+
+  .margin-bottom-20px
+
+  | ● ご挨拶
+
+  .margin-bottom-20px
+
+  span.tooltip data-tooltip-content="#tooltip_content_recent_news"
+    | ● &nbsp;
+    = f.label :recent_news
+    | &nbsp; ℹ️
+  .tooltip_templates
+    span.tooltip_content#tooltip_content_recent_news
+      | 「〇〇さんがセンプレに入会して、〇ヵ月が経ちました。〇〇さんとしては、センプレに入会してからこの〇ヵ月、どんな風に感じてる？　大きなイベントでいうと、部活の大会があって、さらには模試もあって、なかなかのハードスケジュールだったよね」（生徒に話を振る）
+      br
+      br
+      | （生徒の話が終わったら、保護者に話を振る）「お母さまから見て、この一か月の〇〇さんのご様子ですが、いかがですか？」 （この後、センセイが程よくまとめ、次の議題へ）
+  = f.text_area :recent_news, data: { autoresize: '' }
+
+  .margin-bottom-20px
+
+  span.tooltip data-tooltip-content="#tooltip_content_keep"
+    | ● &nbsp;
+    = f.label :keep
+    | &nbsp; ℹ️
+  .tooltip_templates
+    span.tooltip_content#tooltip_content_keep
+      | 「この一か月、〇〇さんはいろいろな面で大きく成長できたよね。最も変わったなという点が、受験に対して主体的になって、毎日、学習の改善サイクルを回せるようになった点だと思うんだけど、どうだろう。昨日も、学びログに～と書いていたけど、あれは良かったよ！」（生徒に話を振る）
+      br
+      br
+      | （生徒の話が終わったら、保護者に話を振る）「お母さまから見て、この一か月の〇〇さんの成長は、どのように感じられていますか？」 （この後、センセイが程よくまとめ、次の議題へ）
+  = f.text_area :keep, data: { autoresize: '' }
+
+  .margin-bottom-20px
+
+  span.tooltip data-tooltip-content="#tooltip_content_problem"
+    | ● &nbsp;
+    = f.label :problem
+    | &nbsp; ℹ️
+  .tooltip_templates
+    span.tooltip_content#tooltip_content_problem
+      | 「一方で、明確に課題も明らかになったよね。先週の指導で話し合った通り、いかに〇〇を改善していくかが今後のカギだと思うけど、〇〇さんはそれについてどう考えてる？」（生徒に話を振る）
+      br
+      br
+      | （生徒の話が終わったら、保護者に話を振る）「そういうわけで、指導では主に〇〇を課題と捉え、改善のサポートをしています。この点以外に、お母さまから見て、何か〇〇さんの課題と感じるところはありますか？」 （この後、センセイが程よくまとめ、次の議題へ）
+  = f.text_area  :problem, data: { autoresize: '' }
+
+  .margin-bottom-20px
+
+  span.tooltip data-tooltip-content="#tooltip_content_try"
+    | ● &nbsp;
+    = f.label :try
+    | &nbsp; ℹ️
+  .tooltip_templates
+    span.tooltip_content#tooltip_content_try
+      | 「今後の目標ですが、第一志望の〇〇大合格に向け、まずは〇〇を達成しようと話し合っております。これについて、〇〇さんはどう考えてる？」（生徒に話を振る）
+      br
+      | （生徒の話が終わったら、保護者に話を振る）「今後の目標に関しては、先ほど〇〇さんが話してくれたように、指導で話し合っています。こちらについて、お母さまは何か感じたことはありますか？」 （この後、センセイが程よくまとめ、次の議題へ）
+      br
+      br
+      | 「〇〇さん、現在考えている受験校について、改めて話してもらっていいかな？」（生徒に話を振る）
+      br
+      | （生徒の話が終わったら、保護者に話を振る）「今の話について、ご家庭では話し合われていましたか？　なるほど、お母さまとしてはまた違うご意見をお持ちなのですね。そういうことでしたら、今後、ご家族の間で改めてお話しする機会を設けていただければと感じますが、いかがでしょうか？」
+  = f.text_area :try, data: { autoresize: '' }
+
+  .margin-bottom-20px
+
+  span.tooltip data-tooltip-content="#tooltip_content_question"
+    | ● &nbsp;
+    = f.label :question
+    | &nbsp; ℹ️
+  .tooltip_templates
+    span.tooltip_content#tooltip_content_question
+      | 面談は以上となります。最後になりますが、お母さまのほうで指導に関しての懸念点・疑問点などはありますか？　もしございましたら、遠慮なく申してください」
+  = f.text_area :question, data: { autoresize: '' }
+
+  .margin-bottom-20px
+
+  span.tooltip data-tooltip-content="#tooltip_content_last_greeting"
+    | ● &nbsp;
+    = f.label :last_greeting
+    | &nbsp; ℹ️
+  .tooltip_templates
+    span.tooltip_content#tooltip_content_last_greeting
+      | 「本日はどうもありがとうございました。これ以降は、定期的に保護者さまとの面談を実施させていただきます。面談は年4回、毎年3月、6月、9月、12月に実施しております。次回は〇月〇週目に実施予定ですので、また時期が迫ってまいりましたら、改めてお伝えいただきます。今後とも、何卒よろしくお願い申し上げます」
+  = f.text_area :last_greeting, data: { autoresize: '' }
+
+  .margin-bottom-20px
+
+  = f.label :comment
+  = f.text_area :comment, data: { autoresize: '' }
+
+  .margin-bottom-20px
+
+  h2 事後評価
+  p style="font-size: 14px;"
+    | ※ 5段階
+    br
+    | Great / Good / So-so / Not Good / Very Bad
+
+  .margin-bottom-20px
+
+  span.tooltip data-tooltip-content="#tooltip_content_parent"
+    | ● &nbsp;
+    = f.label :parent
+    | &nbsp; ℹ️
+  .tooltip_templates
+    span.tooltip_content#tooltip_content_parent
+      ul
+        li 生徒の状況を正しく把握していることが伝わったか
+        li 厳しい面もきちんと把握してくれていることが伝わったか
+        li 本人が頑張れるように励ましてくれていると伝わったか
+        li 話す割合は、センセイ3〜4： 保護者+生徒6〜7で、本人と保護者をなるべくやり取りさせながら、その間をつなぐ様な立ち位置になったか
+        li 親の話をちゃんときいて打ち返すことができたか
+        li 信頼をしてもらえて、安心して任せられると思ってもらえたか
+  .selectbox
+    = f.select :parent,  options_for_select([['Great', 1], ['Good', 2], ['So-so', 3], ['Not Good', 4], ['Very Bad', 5]], selected: @log.parent), include_blank: '--- 選択してください ---'
+
+  .margin-bottom-20px
+
+  span.tooltip data-tooltip-content="#tooltip_content_relation"
+    | ● &nbsp;
+    = f.label :relation
+    | &nbsp; ℹ️
+  .tooltip_templates
+    span.tooltip_content#tooltip_content_relation
+      ul
+        li 保護者が生徒の頑張りや学習状況を理解できたか
+        li 生徒が家族に積極的に応援してもらえるような空気感を醸成できたか
+  .selectbox
+    = f.select :relation,  options_for_select([['Great', 1], ['Good', 2], ['So-so', 3], ['Not Good', 4], ['Very Bad', 5]], selected: @log.relation), include_blank: '--- 選択してください ---'
+
+  .margin-bottom-20px
+
+  span.tooltip data-tooltip-content="#tooltip_content_lesson"
+    | ● &nbsp;
+    = f.label :lesson
+    | &nbsp; ℹ️
+  .tooltip_templates
+    span.tooltip_content#tooltip_content_lesson
+      ul
+        li センセイがこれまで知らなかった生徒の一面、保護者の視点から得られる情報を得られたか
+        li 得られた情報は、積極的に指導の改善に用いていけそうか
+  .selectbox
+    = f.select :lesson,  options_for_select([['Great', 1], ['Good', 2], ['So-so', 3], ['Not Good', 4], ['Very Bad', 5]], selected: @log.lesson), include_blank: '--- 選択してください ---'
+
+  .margin-bottom-20px
+
+  span.tooltip data-tooltip-content="#tooltip_content_prevent_withdrawal"
+    | ● &nbsp;
+    = f.label :prevent_withdrawal
+    | &nbsp; ℹ️
+  .tooltip_templates
+    span.tooltip_content#tooltip_content_prevent_withdrawal
+      ul
+        li 指導内容をもとに、センプレで生徒が何をやってるのか理解してもらえたか
+        li 生徒の頑張りを保護者に感じ取ってもらえたか
+  .selectbox
+    = f.select :prevent_withdrawal,  options_for_select([['Great', 1], ['Good', 2], ['So-so', 3], ['Not Good', 4], ['Very Bad', 5]], selected: @log.prevent_withdrawal), include_blank: '--- 選択してください ---'
+
+  .margin-bottom-20px
+
+  span.tooltip data-tooltip-content="#tooltip_content_exam_schools"
+    | ● &nbsp;
+    = f.label :exam_schools
+    | &nbsp; ℹ️
+  .tooltip_templates
+    span.tooltip_content#tooltip_content_exam_schools
+      ul
+        li 情報をきちんと保護者に共有しており、トラブルを未然に防ぐことに起因できたか
+        li 家庭内で良い話し合いの機会が生まれそうか
+  .selectbox
+    = f.select :exam_schools,  options_for_select([['Great', 1], ['Good', 2], ['So-so', 3], ['Not Good', 4], ['Very Bad', 5]], selected: @log.exam_schools), include_blank: '--- 選択してください ---'
+
+  .margin-bottom-20px
+
+  span.tooltip data-tooltip-content="#tooltip_content_mindset"
+    | ● &nbsp;
+    = f.label :mindset
+    | &nbsp; ℹ️
+  .tooltip_templates
+    span.tooltip_content#tooltip_content_mindset
+      ul
+        li 生徒を中心としたチームであり、そのメンバーに保護者やセンセイがいる、という体系を認識してもらえたか
+        li 保護者も「センプレと一緒に我が子を応援していこう！」と思ってくれ、最大のサポーターとなってくれたか
+  .selectbox
+    = f.select :mindset,  options_for_select([['Great', 1], ['Good', 2], ['So-so', 3], ['Not Good', 4], ['Very Bad', 5]], selected: @log.mindset), include_blank: '--- 選択してください ---'
+
+  .margin-bottom-30px
+
+  = f.submit '保存する', class: 'button button--success full'
+  .margin-bottom-20px
+  = f.submit '下書き保存する', name: 'draft', class: 'button button--sub full'
+
+javascript:
+  $(document).on('ready page:load', function() {
+    $('.tooltip').tooltipster({
+      theme: 'tooltipster-shadow',
+      maxWidth: 800
+    });
+  });
+
+sass:
+  .tooltip_content
+    padding: 10px
+    line-height: 1.8em
+    font-size: 14px
+
+    ul li,
+    ol li
+      padding-left: 1em
+      text-indent: -1em
+      list-style-position: inside
+
+  .tooltip_templates
+    display: none

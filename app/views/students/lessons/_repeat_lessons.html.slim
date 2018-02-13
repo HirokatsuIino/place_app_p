@@ -1,0 +1,14 @@
+.panel.shadow#repeat_lessons
+  .panel__header
+    | 毎週の継続指導のスケジュール
+
+  .panel__body
+    table
+      thead
+        tr
+          th センセイ名
+          th 曜日
+          th 時間帯（指導時間）
+
+      tbody
+        = render partial: 'repeat_lesson', collection: repeat_lessons

@@ -1,0 +1,12 @@
+.page
+  .page__body
+    - if student_signed_in?
+      = link_to '模試予定を入力', new_student_yomikos_trial_test_log_path(@student), class: 'button button--success full'
+
+  .margin-bottom-20px
+
+  .page__header
+    = "#{@student.nickname}さんの模試ログ一覧"
+
+  .page__body
+    = render @trial_test_logs

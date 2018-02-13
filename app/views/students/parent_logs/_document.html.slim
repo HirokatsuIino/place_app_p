@@ -1,0 +1,18 @@
+h3 準備の時見るべきもの
+.selectbox
+  = select_tag :numbers, options_for_select([['保護者面談マニュアル', 'parent_log_manual'], ['学びログ', 'student_logs'], ['週間レポート', 'student_reports'], ['指導ログ', 'teacher_logs'], ['以前の保護者面談ログ', 'prev_parent_logs']]), include_blank: '--- 選択してください ---', id: 'select_contents'
+
+.margin-bottom-40px
+
+= render 'students/parent_logs/manual'
+= render 'students/parent_logs/logs'
+= render 'students/parent_logs/reports'
+= render 'students/parent_logs/teacher_logs'
+= render 'students/parent_logs/prev_parent_logs'
+
+javascript:
+  $('#select_contents').on('change', function() {
+    $('.document_content').hide();
+    target_id = $(this).find('option:checked').val();
+    $('.'+target_id).show();
+  });

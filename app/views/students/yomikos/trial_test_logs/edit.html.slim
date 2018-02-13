@@ -1,0 +1,25 @@
+.page
+  .page__header
+    - if @trial_test_log.carried_out
+      | 模試結果を入力する
+    - elsif params[:result].blank? && (params[:trial_test_log].nil? || params[:trial_test_log][:result].blank?)
+      | 自己採点結果を入力する
+    - else
+      | 結果を入力する
+
+    - if params[:result].blank? && (params[:trial_test_log].nil? || params[:trial_test_log][:result].blank?)
+      - if (action_name == 'edit' || action_name == 'update')
+        br
+        span.navy style="font-size: 14px; font-weight: bold;"
+          | ✏️の部分は、本日の学びログとしてマナビバに公開、マイページに保存されます。
+
+  .page__body
+      = form_for [@student, :yomikos, @trial_test_log] do |f|
+        = render 'form', f: f
+
+        - if @trial_test_log.carried_out
+          = f.submit '入力する', data: { disable_with: '保存中...' }, class: 'button button--success full'
+        - elsif params[:result].blank? && (params[:trial_test_log].nil? || params[:trial_test_log][:result].blank?)
+          = f.submit '自己採点結果を入力する', data: { disable_with: '保存中...' }, class: 'button button--success full'
+        - else
+          = f.submit '結果を入力する', data: { disable_with: '保存中...' }, class: 'button button--success full'

@@ -1,0 +1,14 @@
+.page
+  .page__header
+    - if @log.point.blank?
+      | 過去問の結果を入力する
+    - else
+      | 過去問ログを保存する
+    br
+    span.navy style="font-size: 14px; font-weight: bold;"
+      | ✏️の部分は、本日の学びログとしてマナビバに公開、マイページに保存されます。
+
+  .page__body
+      = form_for [@student, :yomikos, @log] do |f|
+        = render 'form', f: f
+        = f.submit '保存する', data: { disable_with: '保存中...' }, class: 'button button--success full'

@@ -1,0 +1,21 @@
+.page
+  .page__header
+    | 保護者面談ログ
+
+  .page__body
+    - if @student.parent_greeting_logs.exists?
+      = link_to '初回保護者面談ログを編集', edit_student_parent_greeting_log_path(@student, @student.parent_greeting_logs.first), class: 'button button--default full'
+    - else
+      = link_to '初回保護者面談ログを作成', new_student_parent_greeting_log_path(@student), class: 'button button--success full'
+
+
+    .margin-bottom-20px
+
+    = link_to '保護者面談ログを作成', new_student_parent_log_path(@student), class: 'button button--success full'
+
+    .margin-bottom-20px
+
+    .divider
+
+    - @logs.each do |log|
+      = render log

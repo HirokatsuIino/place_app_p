@@ -1,0 +1,23 @@
+table
+  thead
+    tr
+      th 指導日付
+      th 担当センセイ
+      th サイクルレベル
+      th 指導レベル
+      th 学びログレベル
+      th 週レポレベル
+
+  tbody
+    - @lessons.each do |lesson|
+      tr
+        td= lesson.lesson_datetime.to_s(:datetime_jp)
+        td= lesson.teacher.nickname
+        - if lesson.teacher_log && lesson.teacher_log.log_level
+          td= lesson.teacher_log.log_level.cycle_level
+          td= lesson.teacher_log.log_level.lesson_level
+          td= lesson.teacher_log.log_level.log_level
+          td= lesson.teacher_log.log_level.report_level
+        - else
+          td colspan=4
+            | 未作成

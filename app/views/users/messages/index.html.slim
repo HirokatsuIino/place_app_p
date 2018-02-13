@@ -1,0 +1,13 @@
+.page
+  .page__header
+    | メッセージ一覧
+
+  .page__body
+    - if sendable?
+      - if access_senpre_message_page?
+        = link_to "センプレにメッセージを送る", new_user_message_path(0), class: 'button button--success full'
+      - else
+        = link_to "#{@user.name_with_title}にメッセージを送る", new_user_message_path(@user), class: 'button button--success full'
+
+    .tableview
+      = render partial: 'message', collection: @messages

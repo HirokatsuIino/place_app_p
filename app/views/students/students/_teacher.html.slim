@@ -1,0 +1,27 @@
+li.card
+  .card__content.shadow
+    = link_to teacher do
+      .card__image
+        = attachment_image_tag teacher, :image, :fill, 180, 180, fallback: 'http://placehold.it/180x180/e9eceb'
+
+      .card__name
+        = teacher.nickname + 'センセイ'
+
+      = render teacher.setting
+
+    .card__actions
+      .card__action
+        = link_to teacher_reviews_path(teacher) do
+          div
+            = teacher.review_image
+          div
+            = teacher.review_count
+
+      .card__action
+        div id="follow_form_#{teacher.id}"
+          = teacher.follow_form
+
+        | フォロワー数 (
+        span id="follower_num_#{teacher.id}"
+          = teacher.follower_count
+        | )

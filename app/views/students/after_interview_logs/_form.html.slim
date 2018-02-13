@@ -1,0 +1,22 @@
+- if params[:action] == 'new'
+  = form_for [interview.student, interview] do |f|
+    - set_alert :warning, interview.errors.full_messages
+
+    .form-section
+      = f.text_area :content, rows: 30, data: { autoresize: '' }
+      = f.hidden_field :student_id, value: params[:student_id]
+
+    .margin-10px
+
+    = f.submit '投稿する', class: 'button button--success full', data: { disable_with: '投稿中...' }
+
+- elsif params[:action] == 'edit'
+  = form_for [interview.student, interview] do |f|
+    - set_alert :warning, interview.errors.full_messages
+
+    .form-section
+      = f.text_area :content, rows: 30, data: { autoresize: ''}
+
+    .margin-10px
+
+    = f.submit '投稿する', class: 'button button--success full', data: {disable_with: '投稿中...'}

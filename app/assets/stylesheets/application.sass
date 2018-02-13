@@ -1,0 +1,40 @@
+// Vendor
+
+@import normalize-rails
+@import font-awesome
+@import jquery.sidemenu
+@import tooltipster.bundle.min
+@import tooltipster-sideTip-shadow.min
+@import magnific-popup
+
+// "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
+$icon-font-path: "bootstrap-sass/assets/fonts/bootstrap/"
+//@import "bootstrap-sprockets"
+//@import "bootstrap"
+
+// Application
+
+@import lib/*
+@import components/*
+@import layouts/*
+@import modules/*
+@import base
+@import patches/*
+
+//
+// nprogress
+//
+
+$nprogress-zindex: 10
+
+@import nprogress
+
+#nprogress
+  .bar
+    background: $primary-color
+
+  .peg
+    box-shadow: 0 0 10px $primary-color, 0 0 5px $primary-color
+
+  .spinner
+    display: none

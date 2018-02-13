@@ -1,0 +1,46 @@
+.student_logs.document_content
+  - @student.logs.order(created_at: :desc).each do |log|
+    .margin-bottom-20px
+
+    .log_comment
+      h4= log.created_at.to_s(:date)
+
+      .margin-bottom-10px
+      
+      = simple_format(h(log.comment))
+
+    .margin-bottom-10px
+
+    .log_content
+      h4 学習日時
+      = simple_format(h(log.study_date_jp))
+      .margin-bottom-10px
+
+      h4 学習時間
+      = simple_format(h(log.study_time_jp))
+      .margin-bottom-10px
+
+      h4 学習内容
+      = simple_format(h(log.content))
+      .margin-bottom-10px
+
+    .log_comment
+      = log.created_at.to_s(:date)
+
+    .margin-bottom-20px
+
+    .divider
+
+sass:
+  .student_logs
+    display: none
+
+  .log_comment
+    font-size: 14px
+
+  .log_content
+    margin-left: 10px
+    padding-left: 10px
+    border-left: 3px solid #888
+    color: #888
+    font-size: 12px

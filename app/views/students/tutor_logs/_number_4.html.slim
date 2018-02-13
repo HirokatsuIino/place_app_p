@@ -1,0 +1,67 @@
+.tutor_log
+  h3 【第4回目】指導１ヶ月ヒアリング
+
+  .log_items
+    h4 <第4回ガイダンスのゴール>
+    = render 'tutor_log_item', name: 'goal_for_forth_tutor_lesson',  number: 4, f: f
+
+  .log_items
+    h4 <指導前準備>
+    = render 'tutor_log_item', name: 'conscious', number: 4, f:f
+    = render 'tutor_log_item', name: 'talk_about', number: 4, f:f
+
+  .log_items
+    h4 1️⃣ サイクル修正
+    = render 'tutor_log_item', name: 'praise', number: 4, f:f
+    = render 'tutor_log_item', name: 'self_review', number: 4, f:f
+    = render 'tutor_log_item', name: 'fix_cycle', number: 4, f:f
+    = render 'tutor_log_item', name: 'goal_after_fix', number: 4, f:f
+
+  .log_items
+    h4 2️⃣ １ヶ月の振り返り
+    = render 'tutor_log_item', name: 'about_teacher', number: 4, f:f
+    = render 'tutor_log_item', name: 'comparison_before', number: 4, f:f
+    = render 'tutor_log_item', name: 'about_change', number: 4, f:f
+    = render 'tutor_log_item', name: 'about_unchange', number: 4, f:f
+    = render 'tutor_log_item', name: 'tutor_review_for_change', number: 4, f:f
+    = render 'tutor_log_item', name: 'self_review_for_month', number: 4, f:f
+    = render 'tutor_log_item', name: 'ask_for_experience_note', number: 4, f:f
+
+  .log_items
+    h4 3️⃣ ガイダンスの感想
+    = render 'tutor_log_item', name: 'review_for_tutor_lesson', number: 4, f:f
+    = render 'tutor_log_item', name: 'review_for_all_tutor_lesson', number: 4, f:f
+
+  .log_items
+    h4 4️⃣ M3 (Make The Movement)トーク
+    = render 'tutor_log_item', name: 'about_favorite', number: 4, f:f
+    = render 'tutor_log_item', name: 'about_pf', number: 4, f:f
+    = render 'tutor_log_item', name: 'ask_introduce', number: 4, f:f
+    = render 'tutor_log_item', name: 'good_for_pf', number: 4, f:f
+    = render 'tutor_log_item', name: 'hearing', number: 4, f:f
+    = render 'tutor_log_item', name: 'ask_action', number: 4, f:f
+    = render 'tutor_log_item', name: 'share_sns', number: 4, f:f
+    = render 'tutor_log_item', name: 'about_twitter', number: 4, f:f
+
+
+  .log_items
+    h4 5️⃣ 締め
+    = render 'tutor_log_item', name: 'ask_do', number: 4, f:f
+    = render 'tutor_log_item', name: 'ask_advise', number: 4, f:f
+
+  .log_items
+    h4 <指導後振り返り>
+    = render 'tutor_log_item', name: 'tutor_review', number: 4, f:f
+    = render 'tutor_log_item', name: 'comment_to_teacher', number: 4, f:f
+
+  .margin-bottom-20px
+  = render 'log_level', f: f
+
+  .margin-bottom-20px
+
+  - if action_name != 'show'
+    = f.submit '保存する', class: 'button button--success full'
+
+    .margin-bottom-20px
+
+    = f.submit '下書き保存する', name: 'draft_button', class: 'button button--sub full'

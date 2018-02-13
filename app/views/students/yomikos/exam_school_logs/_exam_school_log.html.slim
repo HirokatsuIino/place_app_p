@@ -1,0 +1,25 @@
+h3 受験予定校・学部
+p= simple_format(h(exam_school_log.exam_school))
+
+.margin-bottom-30px
+
+h3 試験日程
+p= simple_format(h(exam_school_log.exam_date))
+
+.margin-bottom-30px
+
+h3 合格発表日
+p= simple_format(h(exam_school_log.announce_date))
+
+- if teacher_signed_in?
+  .margin-bottom-30px
+
+  h3 受験結果
+  p= simple_format(h(exam_school_log.result))
+
+- if action_name == 'index'
+  .margin-bottom-20px
+
+  .divider
+
+  .margin-bottom-20px

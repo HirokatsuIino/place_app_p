@@ -1,0 +1,12 @@
+.page
+  .page__body
+    - if student_signed_in?
+      = link_to '過去問予定を入力', new_student_yomikos_kakomon_log_path(@student), class: 'button button--success full'
+
+  .margin-bottom-20px
+
+  .page__header
+    = "#{@student.nickname}さんの過去問ログ一覧"
+
+  .page__body
+    = render @logs

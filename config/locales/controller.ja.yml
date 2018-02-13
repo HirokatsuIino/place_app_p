@@ -1,0 +1,94 @@
+ja:
+  devise:
+    registrations:
+      not_updated: 入力内容に誤りがあるため、アカウント情報を変更できませんでした。
+  messages:
+    create:
+      success: メッセージを送信しました。
+  questions:
+    create:
+      success: 質問を投稿しました。
+    answers:
+      create:
+        success: 質問に回答しました。
+  students:
+    update:
+      changed: ポイントを変更しました。
+    text_uses:
+      create:
+        success: サブ板を作成しました。
+      update:
+        success: サブ板を更新しました。
+    logs:
+      create:
+        success: 学びログを投稿しました。
+      update:
+        updated: 学びログを更新しました。
+      destroy:
+        deleted: 学びログを削除しました。
+    profiles:
+      create:
+        success: 学習プロフィールを作成しました。
+      update:
+        updated: 学習プロフィールを更新しました。
+      destroy:
+        deleted: 学習プロフィールを削除しました。
+    student_reports:
+      create:
+        success: 週間レポートを作成しました。
+      update:
+        success: 週間レポートを更新しました。
+  administrators:
+    point_up_update:
+      updated: ポイントを増加させました。
+    point_down_update:
+      updated: ポイントを減少させました。
+    confirmation:
+      confirmed: 管理人になりました。
+      already: すでに管理人として認証されています。
+    select:
+      select_teacher: センセイを選択してください。
+  teachers:
+    notes:
+      create:
+        success: センセイノートを投稿しました。
+    posts:
+      create:
+        success: センセイメッセを投稿しました。
+    reviews:
+      create:
+        success: レビューを投稿しました。
+      update:
+        updated: レビューを編集しました。
+      destroy:
+        deleted: レビューを削除しました。
+    logs:
+      create:
+        success: 指導ログを保存しました。
+      update:
+        updated: 指導ログを更新しました。
+  transaction_records:
+    create:
+      create: 取引記録を作成しました。
+    past_record:
+      error: アクセスする権利がありません。
+  feedbacks:
+    create:
+      success: 質問を開発チームに投稿しました。
+  requests:
+    create:
+      success: 予約リクエストを出しました。
+      failed: 他の生徒がすでに予約リクエストを出しているため、予約できませんでした。
+      reserved: この枠はすでに確定しているため、予約できませんでした。
+    change:
+      success: 予約リクエストを受諾しました。
+      denied: 予約リクエストを却下しました。理由や代案を送りましょう。
+  lessons:
+    open:
+      cancel: キャンセルしました。
+    cancel:
+      past: 指導時間が過ぎている為、キャンセルできませんでした。
+      cancel: キャンセルしました。
+    create:
+      create: 新しく指導を作成しました
+      empty: 日時が正しく入力されていません。

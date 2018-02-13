@@ -1,0 +1,66 @@
+.tutor_log
+  h3 【第2回目】学びログの書き方(60分)
+
+  .log_items
+    h4 <第2回ガイダンスのゴール>
+    = render 'tutor_log_item', name: 'goal_for_second_tutor_lesson',  number: 2, f: f
+
+  .log_items
+    h4 <指導前準備>
+    = render 'tutor_log_item', name: 'conscious',  number: 2, f:f
+    = render 'tutor_log_item', name: 'talk_about', number: 2, f:f
+
+  .log_items
+    h4 1️⃣ 前回ガイダンスの振り返り
+    = render 'tutor_log_item', name: 'praise', number: 2, f:f
+    = render 'tutor_log_item', name: 'previous_achivement', number: 2, f:f
+    = render 'tutor_log_item', name: 'problem', number: 2, f:f
+
+  .log_items
+    h4 2️⃣ 今回の指導の概要伝達
+    = render 'tutor_log_item', name: 'lesson_summary', number: 2, f:f
+
+  .log_items
+    h4 3️⃣ 学びログを活かすためのマインドとコツ
+    = render 'tutor_log_item', name: 'courage', number: 2, f:f
+    = render 'tutor_log_item', name: 'find', number: 2, f:f
+    = render 'tutor_log_item', name: 'good_learning', number: 2, f:f
+    = render 'tutor_log_item', name: 'deepen_learning', number: 2, f:f
+    = render 'tutor_log_item', name: 'common', number: 2, f:f
+    = render 'tutor_log_item', name: 'thinking_action', number: 2, f:f
+    = render 'tutor_log_item', name: 'review_before', number: 2, f:f
+
+  .log_items
+    h4 4️⃣ 学びログについて補足
+    = render 'tutor_log_item', name: 'writing_style', number: 2, f:f
+    = render 'tutor_log_item', name: 'upset', number: 2, f:f
+    = render 'tutor_log_item', name: 'time_importance', number: 2, f:f
+    = render 'tutor_log_item', name: 'writing_log_duration', number: 2, f:f
+    = render 'tutor_log_item', name: 'writing_log_time', number: 2, f:f
+
+
+  .log_items
+    h4 5️⃣ 懸念事項の確認
+    = render 'tutor_log_item', name: 'q_and_a', number: 2, f:f
+
+  .log_items
+    h4 6️⃣  目標設定と確認
+    = render 'tutor_log_item', name: 'goal_for_manabi_log', number: 2, f:f
+    = render 'tutor_log_item', name: 'review_for_tutor_lesson', number: 2, f:f
+
+  .log_items
+    h4 <指導後振り返り>
+    = render 'tutor_log_item', name: 'tutor_review', number: 2, f:f
+    = render 'tutor_log_item', name: 'comment_to_teacher', number: 2, f:f
+
+  .margin-bottom-20px
+  = render 'log_level', f: f
+
+  .margin-bottom-20px
+
+  - if action_name != 'show'
+    = f.submit '保存する', class: 'button button--success full'
+
+    .margin-bottom-20px
+
+    = f.submit '下書き保存する', name: 'draft_button', class: 'button button--sub full'

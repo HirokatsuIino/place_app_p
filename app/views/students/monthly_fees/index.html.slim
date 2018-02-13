@@ -1,0 +1,20 @@
+.page
+  .page__header
+
+  .page__body
+    .panel.shadow
+      .panel__header 月謝に関するお知らせ
+      .panel__body
+        - if @student.monthly_fees.blank?
+          | お知らせはありません
+        - else
+          table
+            thead
+              tr
+                th 年月
+                th コメント
+            tbody
+              - @student.monthly_fees.to_a.sort_by!{ |fee| Time.zone.local(fee.year, fee.month) }.reverse.each do |fee|
+                tr
+                  td= "#{fee.year}年#{fee.month}月"
+                  td= fee.comment

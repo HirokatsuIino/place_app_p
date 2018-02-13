@@ -1,0 +1,94 @@
+.page
+  .page__header
+    | 週間レポート
+
+    - if teacher_signed_in? && current_user.coaching?(@student)
+      .clearfix
+        .actions__schedule.margin-bottom-20px
+          = link_to '指導ログを書く', new_teacher_teacher_log_path(lesson_id: @report.lesson_id, teacher_id: current_user.id, student_id: @report.student_id), class: 'button button--success full margin-bottom-20px'
+
+  .page__body
+    .post__image
+      = attachment_image_tag @report.student, :image, :fill, 64, 64, fallback: 'brand-logo.jpg', class: 'circle'
+
+    .post__study-date.margin-bottom-10px
+      span= l(@report.created_at)
+
+    .post__study-content.margin-bottom-10px
+      = @report.student.nickname
+
+    .post__study-content.margin-bottom-10px
+      - @report.review.to_i.times do
+        |★
+
+    .post__study-content.margin-bottom-10px
+      | よかったこと、続けたいこと
+      = simple_format(h(@report.keep))
+
+    .post__study-content.margin-bottom-10px
+      | 課題点
+      = simple_format(h(@report.problem))
+
+    .post__study-content.margin-bottom-10px
+      | 次の一週間の目標＆プラン
+      = simple_format(h(@report.trying))
+
+    - if staff_signed_in? || current_user == @student || (teacher_signed_in? && current_user.coaching?(@student))
+      .post__study-content.margin-bottom-10px
+        | 聞きたいこと、話したいこと
+        = simple_format(h(@report.topic))
+
+      - if @report.images.present?
+        .post__study-content.margin-bottom-10px
+          - @report.images.each do |image|
+            = link_to attachment_url(image, :image) do
+              = image_tag attachment_url image, :image, :fill, 128, 128
+
+        - if @report.student_id == current_user.id
+          .margin-bottom-20px
+            = link_to '編集する', edit_student_student_report_path(@student, @report), class: 'button button--success full margin-bottom-10px'
+
+      - if @prev_logs.present?
+        .divider
+
+        .margin-bottom-20px
+
+        - if @prev_report.present?
+          h3#last_week_trying 先週の目標＆プラン
+          p = @prev_report.trying
+
+          .margin-bottom-20px
+
+          h3 先週の自己評価
+          p = '★' * @prev_report.review.to_i
+
+          .margin-bottom-20px
+
+        h3 先週の学習時間
+        = "#{@prev_study_time / 60}時間 #{@prev_study_time % 60}分"
+
+        .margin-bottom-40px
+
+        h3#last_week_logs 先週の学びログ
+        - @prev_logs.each do |h|
+          - date = h[:date]
+          - logs = h[:logs]
+          h4 = "◼︎ #{date.to_s(:date)}の学びログ"
+
+          - if logs.present?
+            - logs.each do |log|
+              h4 学習時間
+              p = "#{log.study_time_jp}"
+              .margin-bottom-10px
+              h4 学習内容
+              p = simple_format(h(log.content))
+              .margin-bottom-10px
+              h4 今日の学び、発見、ふりかえり
+              p = simple_format(h(log.comment))
+
+              .margin-bottom-30px
+
+          - else
+            p なし
+
+            .margin-bottom-30px

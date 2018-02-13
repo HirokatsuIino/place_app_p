@@ -1,0 +1,21 @@
+tr
+  td= lesson.lesson_type_jp
+  td= link_to lesson.teacher.nickname, lesson.teacher
+  td
+    = "#{lesson.lesson_datetime.to_s(:short_date)}"
+    br
+    = "(#{lesson.lesson_datetime.to_s(:wday_jp)})"
+  td
+    = "#{lesson.lesson_start_time.to_s(:time)}"
+    | から
+    = "#{lesson.lesson_end_time.to_s(:time)}"
+    br
+    = "(#{lesson.lesson_total_time}分)"
+  td style="width: 90px"
+    .right.margin-bottom-10px
+      - if lesson.student_report.blank?
+        = link_to '週間レポートを書く', new_student_lesson_student_report_path(@student, lesson), class: 'button button--success button--minimum right'
+      - else
+        = link_to '週間レポートを編集', edit_student_lesson_student_report_path(@student, lesson, lesson.student_report), class: 'button button--default button--minimum right'
+    .right
+      = link_to '指導日を編集する', edit_teacher_lesson_path(lesson.teacher, lesson), class: 'button button--error button--minimum'

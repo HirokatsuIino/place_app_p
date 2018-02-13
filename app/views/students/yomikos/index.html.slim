@@ -1,0 +1,36 @@
+.page
+  .page__header
+    = "#{@student.nickname}さんのヨミ校情報一覧"
+
+  .page__body
+
+    table
+      thead
+        tr
+          th 第一志望校
+          th ギリ校
+          th ヨミ校
+          th すべり止め校
+          th 作成日
+          th colspan="2"
+      tbody
+        = link_to '新規作成', new_student_yomiko_path(@student), class: 'button button--success full'
+
+        .margin-bottom-20px
+
+        - @yomikos.each do |yomiko|
+          tr
+            td width="25%"
+              = yomiko.first_choice
+            td width="25%"
+              = yomiko.challenge
+            td width="25%"
+              = yomiko.yomiko
+            td width="25%"
+              = yomiko.second_choice
+            td width="100px;"
+              = yomiko.created_at.to_s(:date)
+            td width="90px;"
+              = link_to '詳細', student_yomiko_path(@student, yomiko), class: 'button button--success button--small'
+            td width="90px;"
+              = link_to '削除', student_yomiko_path(@student, yomiko), method: :delete, data: { confirm: "本当に削除しますか？" }, class: 'button button--error button--small'

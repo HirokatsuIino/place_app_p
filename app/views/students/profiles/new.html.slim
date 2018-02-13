@@ -1,0 +1,8 @@
+.page
+  .page__header 学習プロフィールを記入する（タイムラインには非公開）
+  .page__body
+    = form_for @profile, url: student_profile_path(@student, @profile) do |f|
+      = f.fields_for :student_profile_item, @profile.build_student_profile_item do |i|
+        = render 'form', i: i
+      .margin-bottom-10px
+      = f.submit '保存する', class: 'button button--success full', data: { disable_with: '保存中...' }

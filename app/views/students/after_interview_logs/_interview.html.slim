@@ -1,0 +1,8 @@
+.tableview__cell.clearfix
+  = link_to students_interview_log_path(interview) do
+    .timeline__image
+      = attachment_image_tag interview.student, :image, :fill, 64, 64, fallback: 'brand-logo.jpg', class: 'circle'
+
+    .timeline__study-content.margin-bottom-10px
+      | 内容
+      p= truncate(interview.content, length: 64)

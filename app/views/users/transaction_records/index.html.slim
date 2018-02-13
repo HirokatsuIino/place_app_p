@@ -1,0 +1,63 @@
+.page
+  .page__header
+    = "#{@user.nickname}さんのポイント取引履歴"
+
+  .page__body
+    h4= "現在の保有ポイント#{@user.point_calculator.current_point}pt"
+
+    .margin-bottom-10px
+
+    .panel.shadow
+      .panel__header 管理人からのポイントに関するお知らせ
+      .panel__body
+        - if @record_manually.blank?
+          | 管理人からのポイントに関するお知らせはありません。
+        - else
+          table
+            thead
+              tr
+                th pt増減
+                th 処理時刻
+
+              tr
+                th colspan = 2
+                  | コメント
+
+            tbody
+              - @record_manually.each do |record|
+                tr
+                  td
+                    - if record.payer == @user
+                      = "-#{record.amount}pt"
+                    - else
+                      = "+#{record.amount}pt"
+                  td
+                    = record.created_at.to_s(:datetime)
+                tr
+                  td colspan = 2
+                    = record.comment
+
+    .panel.shadow
+      .panel__header  授業で処理されたポイント
+      .panel__body
+        - if @record_automatically.blank?
+          | 指導で処理されたポイントの履歴はありません。
+        - else
+          table
+            thead
+              tr
+                th 増減
+                th 指導時刻
+                th 支払人
+                th 受取人
+
+            tbody
+              - @record_automatically.each do |record|
+                tr
+                  - if @user.student?
+                    td= "#{record.pay_point}pt"
+                  - else
+                    td= "#{record.receive_point}pt"
+                  td= record.processed_time_string
+                  td= record.payer_name_string
+                  td= record.receiver_name_string

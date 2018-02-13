@@ -1,0 +1,14 @@
+- item = TutorLogItemMaster.where(name: name, tutor_log_number: number).first
+- if item
+  .log_item
+    - if item.title.present?
+      .log_item__title= item.title
+    - else
+      .log_item__title.log_item__title--not_list= item.title
+
+    - if item.explanation.present?
+      .log_item__explanation= item.explanation.html_safe
+
+  - if item.textfield_required
+    .margin-bottom-10px
+    = f.text_area item.name.to_sym, data: { autoresize: '' }, readonly: action_name == 'show'

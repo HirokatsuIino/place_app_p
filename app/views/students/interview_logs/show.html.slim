@@ -1,0 +1,79 @@
+.page
+  .page__header
+    | 前面談ログ
+
+  .page__body
+    - if staff_signed_in?
+      .margin-bottom-10px
+
+      = link_to '編集する', edit_student_interview_log_path(@log.student, @log), class: 'button button--success full', style: 'margin-left: 10px;'
+
+      .margin-bottom-20px
+
+    - if @log.interview_log_item.present?
+      h3 体験候補日時
+      .post__study-content style="margin-left: 10px"
+        = simple_format(h(@log.interview_log_item.trial_date))
+        .margin-bottom-10px
+
+      .margin-bottom-40px
+
+      h3 面談後記入欄
+      - %i(comment problem transmission memo).each do |column|
+        h4= InterviewLogItem.human_attribute_name(column)
+        .post__study-content style="margin-left: 10px"
+          = simple_format(h(@log.interview_log_item.method(column).call))
+          .margin-bottom-10px
+        .margin-bottom-40px
+
+      .margin-bottom-40px
+
+      h3 登録経緯（センプレを知ったのは...）
+      - %i(how_to_know why expectation).each do |column|
+        h4= InterviewLogItem.human_attribute_name(column)
+        .post__study-content style="margin-left: 10px"
+          = simple_format(h(@log.interview_log_item.method(column).call))
+          .margin-bottom-10px
+
+      .margin-bottom-40pxa
+
+      h3 学習プロフィール
+      - if old_student_profile_format?
+        .post__study-content style="margin-left: 10px"
+          = simple_format(h(@profile.content))
+          .margin-bottom-10px
+      - else
+        - %i(preferred_school preferred_school_reason school grade study_type hobby club learning goal problem subjects favorite_subjects dislike_subjects level test comment).each do |column|
+          h4= StudentProfileItem.human_attribute_name(column)
+          .post__study-content.margin-bottom-10px style="margin-left: 10px"
+            - if column == :level
+              = simple_format(h(@profile.teacher_edit_student_profile_item.level_jp))
+            - else
+              = simple_format(h(@profile.teacher_edit_student_profile_item.method(column).call))
+          .margin-bottom-40px
+
+      .margin-bottom-40px
+
+      h3 家庭環境
+      - %i(family_preferred_school family_study family_times).each do |column|
+        h4= InterviewLogItem.human_attribute_name(column)
+        .post__study-content style="margin-left: 10px"
+          = simple_format(h(@log.interview_log_item.method(column).call))
+          .margin-bottom-10px
+        .margin-bottom-40px
+
+      .margin-bottom-40px
+
+      h3 センプレに対する理解 （説明後、センプレをどんなものと認識したか）
+      .post__study-content style="margin-left: 10px"
+        = simple_format(h(@log.interview_log_item.understand))
+        .margin-bottom-10px
+
+      .margin-bottom-40px
+
+    - else
+      .post__study-content.margin-bottom-10px
+        = simple_format(h(@log.content))
+
+    .post__study-create
+      | #{l(@log.created_at)}

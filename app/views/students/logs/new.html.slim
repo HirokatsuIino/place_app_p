@@ -1,0 +1,75 @@
+.page
+  .page__header
+    | 学びログを投稿する
+
+  .page__body
+    = form_for @log do |f|
+      - set_alert :warning, @log.errors.full_messages
+
+      .form-section
+        = f.label 'ログ日付', class: 'block'
+        = f.date_select :day, { use_month_numbers: true, start_year: 2015, end_year: (Time.now.year + 1), date_separator: '/ ' }, { class: 'selectbox selectbox--small selectbox--inline' }
+
+      .form-section
+        = f.label :hour, class: 'block' do
+          | 学習時間
+          span.bold.navy （必須）
+        = select_tag :hour, options_for_select(0..23), { include_blank: '-', class: 'selectbox selectbox--small selectbox--inline' }
+        = f.label :hour
+
+        = select_tag :minute, options_for_select(0..59), { include_blank: '-', class: 'selectbox selectbox--small selectbox--inline' }
+        = f.label :minute
+
+        .grey_label
+          | ▶️💡センプレが考える学習時間とは...「集中して、主体的に取り組めた学習に関わる時間のすべて」
+        .grey_label
+          | (センプレの指導、学校や塾などで主体的に受けられた授業、学びログを書くための振り返り時間も含む)
+
+      .form-section
+        - if @last_report.present? && (current_user.student_type.trial? || current_user.student_type.senpre?)
+          table#no-border
+            tr
+              th 今週一週間の目標＆プラン
+            tr
+              td
+                p.center = @last_report.trying
+
+      .form-section
+        = f.label :content, class: 'block' do
+          | 学習内容
+          span.bold.navy （必須）
+        = f.text_area :content, rows: 6, data: { autoresize: '' }
+
+        = f.auto_save_field :content
+
+      .form-section
+        = f.label :comment, class: 'block' do
+          | 今日の学び、発見、ふりかえり
+          span.bold.navy （必須）
+        = f.text_area :comment, rows: 8, data: { autoresize: '' }
+
+        = f.auto_save_field :comment
+
+      .form-section
+        = f.label :images_images, '画像', class: 'block'
+        = f.attachment_field :images_images, multiple: true
+        .grey_label
+          | ※著作権上の理由により、参考書等の学習教材の画像は「学びログ」に添付できません（利用規約参照）。
+        .grey_label
+          | センセイに直接共有するには、週レポまたはメッセージを利用してください。
+
+      - if current_user.provider.present?
+        .form-section
+          => image_tag "twitter_logo_gray.png", height: 16
+          => f.label :twitter_comment
+          = f.text_area :twitter_comment, rows: 2, data: { autoresize: '' }, class: 'word_counter'
+          = label_tag "残り"
+          span class='count'
+          = label_tag "文字"
+
+        .form-section
+          = f.check_box :twitter_post, {checked: true}, "1", "0"
+          = image_tag "twitter_logo_blue.png", height: 20, style: 'margin-bottom: -5px;'
+          = f.label :twitter_post, "共有する"
+
+      = f.submit '投稿する', class: 'button button--success full', data: { disable_with: '投稿中...' }, id: 'saving'

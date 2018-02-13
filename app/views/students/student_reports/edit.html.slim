@@ -1,0 +1,136 @@
+.page
+  .page__header
+    | 週間レポートを投稿する
+    span style="font-size: 12px; margin-left: 20px;" ※ この情報はセンセイ以外には公開されません
+
+  - if @prev_report.present?
+    #top
+      = link_to "先週の目標＆プランを見る", '#last_week_trying', class: 'button button--success full'
+      .margin-bottom-10px
+
+      = link_to "先週の学びログを見る", '#last_week_logs', class: 'button button--success full'
+
+      .margin-bottom-30px
+
+  .page_body
+    = form_for [@student, @lesson, @report], url: { controller: 'students/student_reports', action: 'update' } do |f|
+      - set_alert :warning, @report.errors.full_messages
+
+      .form-section
+        = f.date_select :date, { use_month_numbers: true, start_year: Time.now.year, end_year: Time.now.year, default: @lesson.lesson_datetime }, { class: 'selectbox selectbox--small selectbox--inline' }
+
+      .form-section
+        = f.label :review
+        br
+        = f.radio_button :review, 6
+        = f.label :review_6
+        br
+        = f.radio_button :review, 5
+        = f.label :review_5
+        br
+        = f.radio_button :review, 4
+        = f.label :review_4
+        br
+        = f.radio_button :review, 3
+        = f.label :review_3
+        br
+        = f.radio_button :review, 2
+        = f.label :review_2
+        br
+        = f.radio_button :review, 1
+        = f.label :review_1
+
+      .form-section
+        = f.label :keep
+        = f.text_area :keep, rows: 6, data: { autoresize: '' }
+        / = f.auto_save_field :keep
+
+      .form-section
+        = f.label :problem
+        = f.text_area :problem, rows: 6, data: { autoresize: '' }
+        / = f.auto_save_field :problem
+
+      .form-section
+        = f.label :trying
+        = f.text_area :trying, rows: 6, data: { autoresize: '' }
+        / = f.auto_save_field :trying
+
+      .form-section
+        = f.label :topic
+        = f.text_area :topic, rows: 6, data: { autoresize: '' }
+        / = f.auto_save_field :topic
+
+      .form-section
+        = f.label :images_images, '画像'
+        = f.attachment_field :images_images, multiple: true
+        br
+
+      - if @prev_report.present?
+        .divider
+
+        .margin-bottom-20px
+
+        h3#last_week_trying 先週の目標＆プラン
+        p = simple_format(h(@prev_report.trying))
+
+        .margin-bottom-20px
+
+      h3 先週の学習時間
+      = select_tag :study_time_hour, options_for_select(0..168, :selected => (@prev_study_time / 60)), { include_blank: '-', class: 'selectbox selectbox--small selectbox--inline' }
+      = f.label '時間', style: 'margin: 0 10px 0 5px;'
+
+      = select_tag :study_time_minute, options_for_select(0..59, :selected => (@prev_study_time % 60)), { include_blank: '-', class: 'selectbox selectbox--small selectbox--inline' }
+      = f.label '分', style: 'margin-left: 5px;'
+
+      .margin-bottom-20px
+
+      table style="font-size: 9px; text-align: center;"
+        thead
+          tr
+            - @prev_logs.reverse.each do |h|
+              - date = h[:date]
+              th
+                = "#{date.to_datetime.to_s(:short_date)} (#{date.to_datetime.to_s(:wday_jp)})"
+        tbody
+          tr
+            - @prev_logs.reverse.each do |h|
+              - logs = h[:logs]
+              - study_time = logs.present? ? (sum = logs.inject(0) { |s, log| s + log.study_time.to_i }; sum == 0 ? '0時間' : "%d時間 %d分" % [sum/60, sum%60]) : '-'
+              td
+                = "#{study_time}"
+
+      .margin-bottom-40px
+
+      h3#last_week_logs 先週の学びログ
+      - @prev_logs.each do |h|
+        - date = h[:date]
+        - logs = h[:logs]
+        h4 = "◼︎ #{date.to_s(:date)}の学びログ"
+
+        - if logs.present?
+          - logs.each do |log|
+            h4 学習時間
+            p = "#{log.study_time_jp}"
+            .margin-bottom-10px
+            h4 学習内容
+            p = simple_format(h(log.content))
+            .margin-bottom-10px
+            h4 今日の学び、発見、ふりかえり
+            p = simple_format(h(log.comment))
+
+            .margin-bottom-20px
+
+        - else
+          p なし
+
+          .margin-bottom-20px
+
+        .divider
+
+      - if @prev_report.present?
+        h3 先週の自己評価
+        p = '★' * @prev_report.review.to_i
+
+        .margin-bottom-30px
+
+      = f.submit '保存する', class: 'button button--success full', data: { disable_with: '投稿中...' }

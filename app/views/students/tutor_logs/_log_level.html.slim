@@ -1,0 +1,30 @@
+.log_items
+  = render 'tutor_log_item', name: 'select_lesson_level',  number: 1, f: f
+
+.selectbox
+  = f.select :lesson_level, options_for_select([[1, 1], [2, 2], [3, 3], [4, 4]], selected: @form.lesson_level), {}, disabled: action_name == 'show'
+
+.margin-bottom-20px
+
+.log_items
+  = render 'tutor_log_item', name: 'select_log_level',  number: 1, f: f
+
+.selectbox
+  = f.select :log_level,    options_for_select([[1, 1], [2, 2], [3, 3], [4, 4]], selected: @form.log_level), {}, disabled: action_name == 'show'
+
+.margin-bottom-20px
+
+.log_items
+  = render 'tutor_log_item', name: 'select_weekly_report_level',  number: 1, f: f
+
+.selectbox
+  = f.select :report_level, options_for_select([[1, 1], [2, 2], [3, 3], [4, 4]], selected: @form.report_level), {}, disabled: action_name == 'show'
+
+.margin-bottom-20px
+
+.log_items
+  = render 'tutor_log_item', name: 'select_cycle_level',  number: 1, f: f
+
+.selectbox
+  = f.select :cycle_level,  options_for_select([[1, 1], [2, 2], [3, 3], [4, 4]], selected: @form.cycle_level), {}, disabled: action_name == 'show'
+

@@ -1,0 +1,27 @@
+.page
+  .page__header 生徒プロフィール
+
+  .page__body
+    .tableview
+      - if @profiles.present?
+        = render @profiles
+      - else
+        | 学習プロフィールはありません
+
+- if current_user_admin_or_cs? || current_user.is_in_charge_of(@student)
+  .page
+    .page__header
+      = "#{@student.nickname}さんの面談ログ一覧(Admin/CS/担当センセイのみ)"
+
+    - if current_user_admin_or_cs?
+      = link_to '前面談ログを作る', new_students_interview_log_path(student_id: params[:student_id]), class: 'button button--default'
+
+      .margin-bottom-10px
+
+      = link_to '後面談ログを作る', new_students_after_interview_log_path(student_id: params[:student_id]), class: 'button button--default'
+
+    .tableview
+      - if @interviews.present?
+        = render partial: 'students/interview_logs/interview', collection: @interviews
+      - else
+        | 面談ログはありません

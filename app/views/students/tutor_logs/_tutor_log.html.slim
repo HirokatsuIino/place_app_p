@@ -1,0 +1,85 @@
+.tutor_log
+  h3 以前のガイダンスログ
+  .selectbox
+    = select_tag :numbers, options_for_select([['1回目ガイダンスログ', 1], ['2回目ガイダンスログ', 2], ['3回目ガイダンスログ', 3], ['4回目ガイダンスログ', 4]]), include_blank: '--- 選択してください ---', id: 'select_contents'
+
+  .margin-bottom-40px
+
+  .select_content.content_1
+    - TutorLogItemMaster.where(tutor_log_number: 1, textfield_required: true).order(:order).each do |log_item_master|
+      .prev_logs__item
+        .prev_logs__item__title= "#{log_item_master.title}"
+        .prev_logs__item__content
+          - if log = TutorLogItem.where(tutor_log_id: @student.tutor_logs.first_log.map(&:id), tutor_log_item_master: log_item_master.id).first
+            - if staff_signed_in? || !log.tutor_log.draft
+              = simple_format(h(log.content))
+            - else
+              | -
+          - else
+            | -
+
+    - if staff_signed_in?
+      - if @student.tutor_logs.first_log.exists?
+        = link_to '編集', edit_student_tutor_log_path(@student, 1, @student.tutor_logs.first_log), class: 'button button--success full'
+      - else
+        = link_to '作成', new_student_tutor_log_path(@student, 1), class: 'button button--success full'
+
+
+  .select_content.content_2
+    - TutorLogItemMaster.where(tutor_log_number: 2, textfield_required: true).order(:order).each do |log_item_master|
+      .prev_logs__item
+        .prev_logs__item__title= "#{log_item_master.title}"
+        .prev_logs__item__content
+          - if log = TutorLogItem.where(tutor_log_id: @student.tutor_logs.second_log.map(&:id), tutor_log_item_master: log_item_master.id).first
+            - if staff_signed_in? || !log.tutor_log.draft
+              = simple_format(h(log.content))
+            - else
+              | -
+          - else
+            | -
+
+    - if staff_signed_in?
+      - if @student.tutor_logs.second_log.exists?
+        = link_to '編集', edit_student_tutor_log_path(@student, 2, @student.tutor_logs.second_log), class: 'button button--success full'
+      - else
+        = link_to '作成', new_student_tutor_log_path(@student, 2), class: 'button button--success full'
+
+
+
+  .select_content.content_3
+    - TutorLogItemMaster.where(tutor_log_number: 3, textfield_required: true).order(:order).each do |log_item_master|
+      .prev_logs__item
+        .prev_logs__item__title= "#{log_item_master.title}"
+        .prev_logs__item__content
+          - if log = TutorLogItem.where(tutor_log_id: @student.tutor_logs.third_log.map(&:id), tutor_log_item_master: log_item_master.id).first
+            - if staff_signed_in? || !log.tutor_log.draft
+              = simple_format(h(log.content))
+            - else
+              | -
+          - else
+            | -
+
+    - if staff_signed_in?
+      - if @student.tutor_logs.third_log.exists?
+        = link_to '編集', edit_student_tutor_log_path(@student, 3, @student.tutor_logs.third_log), class: 'button button--success full'
+      - else
+        = link_to '作成', new_student_tutor_log_path(@student, 3), class: 'button button--success full'
+
+  .select_content.content_4
+    - TutorLogItemMaster.where(tutor_log_number: 4, textfield_required: true).order(:order).each do |log_item_master|
+      .prev_logs__item
+        .prev_logs__item__title= "#{log_item_master.title}"
+        .prev_logs__item__content
+          - if log = TutorLogItem.where(tutor_log_id: @student.tutor_logs.forth_log.map(&:id), tutor_log_item_master: log_item_master.id).first
+            - if staff_signed_in? || !log.tutor_log.draft
+              = simple_format(h(log.content))
+            - else
+              | -
+          - else
+            | -
+
+    - if staff_signed_in?
+      - if @student.tutor_logs.forth_log.exists?
+        = link_to '編集', edit_student_tutor_log_path(@student, 4, @student.tutor_logs.forth_log), class: 'button button--success full'
+      - else
+        = link_to '作成', new_student_tutor_log_path(@student, 4), class: 'button button--success full'

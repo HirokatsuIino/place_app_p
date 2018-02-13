@@ -1,0 +1,8 @@
+.page
+  .page__header
+    | 学びログ一覧
+
+  .page__body
+    .tableview
+      = render partial: 'log', collection: @logs
+

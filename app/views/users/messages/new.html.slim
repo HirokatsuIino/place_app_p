@@ -1,0 +1,26 @@
+.page
+  .page__header
+    - if access_senpre_message_page?
+      = "センプレにメッセージを送る"
+    - else
+      = "#{@user.name_with_title}にメッセージを送る"
+
+  .page__body
+    = form_for [@user, @message], url: { controller: 'users/messages' } do |f|
+      - set_alert :warning, @message.errors.full_messages
+
+      .form-section
+        = f.text_area :content, placeholder: '内容を入力してください。', data: { autoresize: '' }
+
+      .form-section
+        = f.label :images_images, '画像'
+        = f.attachment_field :images_images, multiple: true
+
+      .form-section
+        - if current_user.student? && current_user.student_type.free?
+          = f.submit 'トライアル期間が終了したので送れません', class: 'button button--disabled full', disabled: true
+        - else
+          = f.submit '送信する', class: 'button button--success full', data: {disable_with: '送信中...'}
+
+    .tableview
+      = render partial: 'message', collection: @messages

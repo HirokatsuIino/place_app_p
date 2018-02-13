@@ -1,0 +1,13 @@
+.page
+  .page__header
+    | 模試ログを入力する
+    - if ship_it?
+      br
+      span.navy style="font-size: 14px; font-weight: bold;"
+        | ✏️の部分は、本日の学びログとしてマナビバに公開、マイページに保存されます。
+
+  .page__body
+
+    = form_for [@student, :yomikos, @trial_test_log] do |f|
+      = render 'form', f: f
+      = f.submit '作成する', data: { disable_with: '保存中...' }, class: 'button button--success full'

@@ -1,0 +1,48 @@
+.margin-bottom-30px
+
+.center-align
+  h2.bold style="color: #4B8968; display: inline; padding: 10px 5px 8px; border-bottom: 5px solid #4B8968;"
+    | 学びログの書き方
+
+.margin-bottom-30px
+
+= image_tag 'how_to_log.jpg', style: 'width: 100%;'
+
+.post
+  - @posts.each do |post|
+    .tableview__cell.tableview--divider
+      .timeline__image
+        = attachment_image_tag post.poster, :image, :fill, 80, 80, fallback: 'brand-logo.jpg', class: 'circle'
+
+      .timeline__user-info
+        = render partial: 'posts/user_elem_info', locals: { poster: post.poster }
+
+      - if post.poster.student?
+        .timeline__user-info
+          = render partial: 'posts/user_info', locals: { setting: post.poster.setting }
+
+      .clearfix
+
+      .timeline__body
+        div
+          = simple_format(h("#{post.post_content.comment}"))
+
+      .student-log__body
+        .student-log__body--date
+          | 学習日時
+
+          p
+            = "#{post.post_content.study_date_jp}"
+
+        .student-log__body--time
+          | 学習時間
+
+          p
+            = "#{post.post_content.study_time_jp}"
+
+        .student-log__body--content
+          | 学習内容
+          = simple_format(h("#{post.post_content.content}"))
+
+      .timeline__time
+        = "#{post.approximate_time_ago}"

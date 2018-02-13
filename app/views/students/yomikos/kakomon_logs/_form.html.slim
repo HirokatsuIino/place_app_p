@@ -1,0 +1,72 @@
+.form-section
+  = f.label :year
+  - if ship_it?
+    span &nbsp;✏️
+
+  div style="display: table;"
+    .selectbox.selectbox--inline
+      = f.select :year, (Time.zone.now.year-1)..(Time.zone.now.year+3)
+    span style="display: table-cell; vertical-align: middle;" 年
+
+    .selectbox.selectbox--inline
+      = f.select :month, (1..12).map { |i| [i, i] }
+    span style="display: table-cell; vertical-align: middle;" 月
+
+    .selectbox.selectbox--inline
+      = f.select :day, (1..31).map { |i| [i, i] }, { prompt: '------' }
+    span style="display: table-cell; vertical-align: middle;" 日
+
+.form-section
+  = f.label :college
+  - if ship_it?
+    span &nbsp;✏️
+
+  = f.text_field :college, placeholder: '例：早稲田大学文学部'
+  = f.auto_save_field :college
+
+.form-section
+  = f.label :questions_year
+  - if ship_it?
+    span &nbsp;✏️
+
+  = f.text_field :questions_year, placeholder: '例：2011年'
+  = f.auto_save_field :questions_year
+
+.form-section
+  = f.label :subject
+  - if ship_it?
+    span &nbsp;✏️
+
+  = f.text_field :subject, placeholder: '例：英語'
+  = f.auto_save_field :subject
+
+- if ship_it?
+  = f.hidden_field :carried_out, value: true
+
+  .form-section
+    = f.label :correct
+    = f.text_area :correct, data: { autoresize: '' }, placeholder: '例：24/38'
+    = f.auto_save_field :correct
+
+  .form-section
+    = f.label :point
+    p style="font-size: 13px; color: #6d6d6d; margin-top: 5px; margin-bottom: 10px;"
+      | ✔️ 重要POINT：配点は自分で考えて算出する！各問題がどれくらいの比重かを考えて算出し、合格最低点との差分を図ることが重要！
+    = f.text_area :point, data: { autoresize: '' }, placeholder: '例：英語 47/75'
+    = f.auto_save_field :point
+
+  .form-section
+    = f.label :big_questions_correct
+    = f.text_area :big_questions_correct, data: { autoresize: '' }, placeholder: '例：5/14・6/10・6/7・7/7'
+    = f.auto_save_field :big_questions_correct
+
+  .form-section
+    = f.label :impression
+    span &nbsp;✏️
+
+    p style="font-size: 13px; color: #6d6d6d; margin-top: 5px;"
+      | ✔️ 重要POINT①：科目ごとでは、取り得た点数と実際の点数との差分を算出して、その差分を埋めるための対策を考えることが重要！
+    p style="font-size: 13px; color: #6d6d6d; margin-bottom: 10px;"
+      | ✔️ 重要POINT②：3科目揃えば、3科目を通しての合格点との差分を算出し、分析をすること！それをもとに、各科目の戦略・方針の更新を行うことが重要！
+    = f.text_area :impression, rows: 10, data: { autoresize: '' }, placeholder: "例：\n大問毎に振り返ると、\n(1) 5/14 本文の流れで推測して選択肢を選ぶっていうのはもちろん必要なんだけど、問題によっては文法的にその語句を入れることが出来ないっていう場合もあるから解き方に関して１問１問見極めることが出来ればいいなと思う。選択肢の意味がわからないのが一番最悪だから語彙力、あとイディオムは徹底的に穴を埋めていきたい。\n(2) 6/10 おおむね文章全体の流れと該当箇所の要旨が理解出来ていれば回答できるが、それを素早く見つけるスキルが必要。でも枝葉末節を問う問題はないので重要なところが読み取れてたらいい。この問題は少し焦って回答してしまう傾向があるのでもう少し設問を吟味しても良さそう。\n(3) 6/7 各段落の要旨をしっかり掴めたら容易。空所を含む段落と選択肢に共通の単語や類似表現があるからそれは見落とさないようにする。が、そればっかりに頼ってミスることもあるので本文の流れは要確認。難易度としては抽象的な文章だから若干難しい。\n(4) 7/7 この問題の解き方が分かってきた。文法的に入る可能性があるのをピックアップして当てはめるだけなんだけど1回1回選択肢に可能性があるものをチェックしてやるとミスがなくなった。ここはミスせずに乗り越えたい。\n\n<3教科（英国日）を通して>\n・合計点：131/200\n・合格最低点：127/200\n合格最低点だけ見たらよくここまで成長したなと思える。でも取りこぼしてるところが結構あって勿体無いなと感じている。特に英語は目標である50/75を取ることができなかった。理由としては“だいたい“でしか英文を読むことができなかったのが大きいと感じている。イディオムの穴を埋めたら時間無制限であればもう少し点数が取れると感じているので、イディオムを埋めた上で速読できるように徹底的に問題と向き合い続けられて慣れて来たらだいぶよくなって合格最低点に+１割も見えてくるなと思う。国語は安定感が出て来た。日本史は意外と知識が埋まって来た感覚がある。ただ基本的なところでつまづくことがまだあるので万全とは言い切れないのでスピマスの復習を行いたいと思う。"
+    = f.auto_save_field :impression

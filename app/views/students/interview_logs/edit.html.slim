@@ -1,0 +1,20 @@
+.page
+  .page__header 前面談ログを編集する
+  .page__body.two_pane
+    .left_pane
+      = form_for @log, url: student_interview_log_path(@student, @log), method: :patch do |f|
+        - if old_interview_log_format?
+          = f.text_area :content, rows: 1, data: { autoresize: '' }
+        - else
+          = f.fields_for :interview_log_item, @log.interview_log_item do |i|
+            = render 'form', i: i
+
+
+        .margin-bottom-20px
+
+        = f.submit '保存する', class: 'button button--success full', data: { disable_with: '保存中...' }
+
+    .right_pane
+      = render 'sub'
+
+    .clearfix

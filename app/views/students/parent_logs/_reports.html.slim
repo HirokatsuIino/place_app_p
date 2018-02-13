@@ -1,0 +1,35 @@
+.student_reports.document_content
+  - @student.reports.order(created_at: :desc).each do |report|
+    .margin-bottom-20px
+
+    .report_content
+      h4= report.created_at.to_s(:date)
+      .margin-bottom-10px
+      h4= '⭐️' * report.review.to_i
+      .margin-bottom-10px
+      h4 よかったこと、続けたいこと
+      = simple_format(h(report.keep))
+      .margin-bottom-10px
+      h4 課題点
+      = simple_format(h(report.problem))
+      .margin-bottom-10px
+      h4 次の一週間の目標＆プラン
+      = simple_format(h(report.trying))
+      .margin-bottom-10px
+      h4 聞きたいこと、話したいこと
+      = simple_format(h(report.topic))
+      .margin-bottom-10px
+      h4 先週の学習時間
+      - study_time = report.study_time.presence || (report.lesson ? prev_study_time(report.lesson.lesson_datetime) : 0)
+      = "#{study_time/60}時間 #{study_time%60}分"
+
+    .margin-bottom-20px
+
+    .divider
+
+sass:
+  .student_reports
+    display: none
+
+  .report_content
+    font-size: 14px

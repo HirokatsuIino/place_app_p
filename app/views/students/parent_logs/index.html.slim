@@ -1,0 +1,7 @@
+.page
+  .page__header
+    = "#{@student.nickname}さんの保護者面談ログ一覧"
+
+  .page__body
+    ul.list_view.list_view-thumbnail
+      = render (@student.parent_greeting_logs + @student.parent_logs).sort_by(&:created_at).reverse

@@ -1,0 +1,50 @@
+.page
+  .page__header
+    | 学習プロフィール
+
+  .page__body
+    - if @profile.present?
+      .post__image.clearfix
+        = attachment_image_tag @profile.student, :image, :fill, 64, 64, fallback: 'brand-logo.jpg', class: 'circle'
+
+      - if @profile.student_profile_item.present?
+        - %i(preferred_school preferred_school_reason hobby club learning school grade study_type subjects favorite_subjects dislike_subjects test level goal problem comment).each do |column|
+          h4= StudentProfileItem.human_attribute_name(column)
+          .post__study-content.margin-bottom-10px style="margin-left: 10px"
+            - if column == :level
+              = simple_format(h(@profile.student_profile_item.level_jp))
+            - else
+              = simple_format(h(@profile.student_profile_item.method(column).call))
+      - else
+        .post__study-content.margin-bottom-10px
+          = simple_format(h(@profile.free_content))
+
+      .post__study-create.margin-bottom-10px
+        | #{l(@profile.created_at)}
+
+      - if @profile.images.present?
+        - @profile.images.each do |image|
+          = link_to attachment_url(image, :image) do
+            = attachment_image_tag image, :image, :fill, 64, 64
+
+      - if current_user == @student
+        = link_to '学習プロフィールを編集する', edit_student_profile_path(@student), class: 'button button--success full margin-bottom-10px'
+    - else
+      | 学習プロフィールはありません
+
+- if staff_signed_in? || (teacher_signed_in? && current_user.coaching?(@profile.student))
+  .page
+    .page__header
+      = "#{@student.nickname}さんの面談ログ一覧 (Admin/CS/担当センセイのみ)"
+
+    .page__body
+      - if staff_signed_in?
+        = link_to '前面談ログを作る', new_student_interview_log_path(@student), class: 'button button--success full'
+        .margin-bottom-10px
+        = link_to '後面談ログを作る', new_student_after_interview_log_path(@student), class: 'button button--success full'
+
+      .tableview
+        - if @interviews.present?
+          = render partial: 'students/interview_logs/interview', collection: @interviews
+        - else
+          | 面談ログはありません

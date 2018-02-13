@@ -1,0 +1,22 @@
+.teacher_logs.document_content
+  - @student.teacher_logs.order(created_at: :desc).each do |log|
+    .margin-bottom-20px
+
+    .teacher_log_content
+      h4= log.created_at.to_s(:date)
+      .margin-bottom-10px
+      h4= '⭐️' * (log.self_score || 0)
+      .margin-bottom-10px
+      h4 内容
+      = simple_format(h(log.log_content))
+
+    .margin-bottom-20px
+
+    .divider
+
+sass:
+  .teacher_logs
+    display: none
+
+  .teacher_log_content
+    font-size: 14px

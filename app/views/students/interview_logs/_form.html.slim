@@ -1,0 +1,102 @@
+.interview_log
+  - if action_name != 'new'
+    h3 体験候補日時
+
+    .popup
+      = i.text_area :trial_date, rows: 1, data: { autoresize: '' }
+
+    .margin-bottom-30px
+
+  - if action_name == 'edit'
+    h3 面談後記入欄
+
+    .popup
+      = i.label :comment
+      = i.text_area :comment, rows: 1, data: { autoresize: '' }
+
+    .popup
+      = i.label :problem
+      = i.text_area :problem, rows: 1, data: { autoresize: '' }
+
+    .popup
+      = i.label :transmission
+      = i.text_area :transmission, rows: 1, data: { autoresize: '' }
+
+    .popup
+      = i.label :memo
+      = i.text_area :memo, rows: 1, data: { autoresize: '' }
+
+    .margin-bottom-40px
+
+  h3 登録経緯
+  .popup
+    = i.label :how_to_know
+    = i.text_area :how_to_know, rows: 1, data: { autoresize: '' }
+
+  .popup
+    = i.label :why
+    = i.text_area :why, rows: 1, data: { autoresize: '' }
+
+  .popup
+    = i.label :expectation
+    = i.text_area :expectation, rows: 1, data: { autoresize: '' }
+
+  .margin-bottom-40px
+
+  h3 学習プロフィール
+  - if old_student_profile_format?
+    = fields_for :teacher_edit_student_profile, @profile do |profile_form|
+      = profile_form.text_area :content, rows: 1, data: { autoresize: '' }
+  - else
+    = fields_for :teacher_edit_student_profile_item, @profile.teacher_edit_student_profile_item do |profile_form|
+      = render 'students/profiles/form', i: profile_form
+
+  .margin-bottom-40px
+
+  h3 家庭環境
+  .popup
+    = i.label :family_preferred_school
+    = i.text_area :family_preferred_school, rows: 1, data: { autoresize: '' }
+
+  .popup
+    = i.label :family_study
+    = i.text_area :family_study, rows: 1, data: { autoresize: '' }
+
+  .popup
+    = i.label :family_times
+    = i.text_area :family_times, rows: 1, data: { autoresize: '' }
+
+  .margin-bottom-30px
+
+  h3 センプレに対する理解(説明後、センプレをどんなものと認識したか)
+  .popup
+    = i.text_area :understand, rows: 1, data: { autoresize: '' }
+
+  .margin-bottom-30px
+
+  - if action_name == 'new'
+
+    h3 体験候補日時
+    .popup
+      = i.text_area :trial_date, rows: 1, data: { autoresize: '' }
+
+    .margin-bottom-30px
+
+  - if action_name == 'new'
+    h3 面談後記入欄
+
+    .popup
+      = i.label :comment
+      = i.text_area :comment, rows: 1, data: { autoresize: '' }
+
+    .popup
+      = i.label :problem
+      = i.text_area :problem, rows: 1, data: { autoresize: '' }
+
+    .popup
+      = i.label :transmission
+      = i.text_area :transmission, rows: 1, data: { autoresize: '' }
+
+    .popup
+      = i.label :memo
+      = i.text_area :memo, rows: 1, data: { autoresize: '' }

@@ -1,0 +1,62 @@
+.tutor_log
+  h3 【第3回目】週レポの書き方
+
+  .log_items
+    h4 <第3回ガイダンスのゴール>
+    = render 'tutor_log_item', name: 'goal_for_third_tutor_lesson',  number: 3, f: f
+
+  .log_items
+    h4 <指導前準備>
+    = render 'tutor_log_item', name: 'conscious', number: 3, f:f
+    = render 'tutor_log_item', name: 'talk_about', number: 3, f:f
+
+  .log_items
+    h4 1️⃣ 前回チュータ指導の振り返り
+    = render 'tutor_log_item', name: 'praise', number: 3, f:f
+    = render 'tutor_log_item', name: 'achivement_before', number: 3, f:f
+    = render 'tutor_log_item', name: 'problem_of_log', number: 3, f:f
+
+  .log_items
+    h4 2️⃣ 今回の指導の概要伝達
+    = render 'tutor_log_item', name: 'summary_of_lesson', number: 3, f:f
+
+  .log_items
+    h4 3️⃣ 週レポについて
+    = render 'tutor_log_item', name: 'about_weekly_report', number: 3, f:f
+    = render 'tutor_log_item', name: 'good_for_weekly_report', number: 3, f:f
+    = render 'tutor_log_item', name: 'weekly_report_level', number: 3, f:f
+    = render 'tutor_log_item', name: 'self_review_for_weekly_report', number: 3, f:f
+    = render 'tutor_log_item', name: 'tutor_review_for_weekly_report', number: 3, f:f
+
+
+  .log_items
+    h4 4️⃣ 週レポの書き方について
+    = render 'tutor_log_item', name: 'writing_sequence', number: 3, f:f
+    = render 'tutor_log_item', name: 'technique_for_weekly_report', number: 3, f:f
+    = render 'tutor_log_item', name: 'edit_for_weekly_report', number: 3, f:f
+
+  .log_items
+    h4 5️⃣ 懸念事項の確認
+    = render 'tutor_log_item', name: 'q_and_a', number: 3, f:f
+
+  .log_items
+    h4 6️⃣ 指導内容のまとめと振り返り
+    = render 'tutor_log_item', name: 'goal_for_weekly_report', number: 3, f:f
+    = render 'tutor_log_item', name: 'review_for_tutor_lesson', number: 3, f:f
+
+  .log_items
+    h4 <指導後振り返り>
+    = render 'tutor_log_item', name: 'tutor_review', number: 3, f:f
+    = render 'tutor_log_item', name: 'comment_to_teacher', number: 3, f:f
+
+  .margin-bottom-20px
+  = render 'log_level', f: f
+
+  .margin-bottom-20px
+
+  - if action_name != 'show'
+    = f.submit '保存する', class: 'button button--success full'
+
+    .margin-bottom-20px
+
+    = f.submit '下書き保存する', name: 'draft_button', class: 'button button--sub full'

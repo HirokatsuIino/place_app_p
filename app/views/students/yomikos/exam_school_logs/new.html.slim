@@ -1,0 +1,7 @@
+.page
+  .page__header 受験校ログを入力する
+
+  .page__body
+    = form_for [@student, :yomikos, @exam_school_log] do |f|
+      = render 'form', f: f
+      = f.submit '作成する', class: 'button button--success full'

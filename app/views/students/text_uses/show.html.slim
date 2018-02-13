@@ -1,0 +1,5 @@
+.page
+  .page__header= "#{@student.nickname}のサブ板"
+
+  .page__body
+    = simple_format(h(@student.text_use.content))

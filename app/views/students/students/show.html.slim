@@ -1,0 +1,47 @@
+.teacher-profile
+  .teacher-profile__image
+    = attachment_image_tag @student, :image, :fill, 128, 128, fallback: 'brand-logo.jpg', class: 'circle'
+
+  .teacher-profile__info
+    .teacher-profile__name
+      | #{@student.nickname}
+
+    .teacher-profile__senpre-id
+      | #{@student.senpre_id}
+
+    = render partial: 'setting', locals: { setting: @student.setting }
+
+    - if current_user == @student || (teacher_signed_in? && current_user.coaching?(@student)) || admin_signed_in? || customer_success_signed_in?
+      .teacher-profile__education
+        = @student.student_type.to_s(:detail)
+
+  .clearfix
+
+  .teacher-profile__message.margin-bottom-10px
+    | #{@student.setting.self_intro}
+
+  - if current_user == @student || admin_signed_in? || customer_success_signed_in?
+    .actions_messages.margin-bottom-20px.right-align
+      = link_to '月謝履歴', student_monthly_fees_path(@student), class: 'button button--default', style: 'min-width: 50%'
+
+  - if (teacher_signed_in? && current_user.coaching?(@student)) || staff_signed_in?
+    div style="margin-left: 50%; font-size: 13px;"
+      .panel.shadow
+        .panel__header style="font-size: 14px;"
+          | その他生徒情報（生徒には非表示）
+        .panel__body
+          .actions_messages.margin-bottom-10px.right-align
+            = link_to 'DMを送信', new_user_message_path(@student), class: 'button button--default full'
+          .actions_messages.margin-bottom-10px.right-align
+            = link_to  "学習プロフィール / 面談ログ", student_profile_path(@student), class: 'button button--default full'
+          .actions_messages.margin-bottom-10px.right-align
+            = link_to '週間レポート', student_student_reports_path(@student), class: 'button button--default full'
+          - if @teacher_logs.present?
+            .actions_messages.margin-bottom-10px.right-align
+              = link_to '指導ログ', teacher_teacher_logs_path(current_user, student_id: @student.id), class: 'button button--default full'
+          /- if @student.parent_logs.present? || @student.parent_greeting_logs.present?
+          .actions_messages.margin-bottom-10px.right-align
+            = link_to '保護者面談ログ', select_student_parent_logs_path(@student), class: 'button button--default full'
+  .clearfix
+
+= render_post_list

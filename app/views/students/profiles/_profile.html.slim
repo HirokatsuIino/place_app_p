@@ -1,0 +1,8 @@
+.tableview__cell.clearfix
+  .timeline__image
+    = attachment_image_tag profile.student, :image, :fill, 64, 64, fallback: 'brand-logo.jpg', class: 'circle'
+
+  .timeline__study-date.margin-bottom-5px
+    | #{profile.student.nickname}
+
+  = link_to '学習プロフィールを見る', students_profile_path(profile), class: 'button button--default'

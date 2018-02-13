@@ -1,0 +1,9 @@
+.page
+  .page__header
+    - if teacher_signed_in?
+      = "#{@student.nickname}さんの受験校ログ"
+    - else
+      = "過去問"
+
+  .page__body
+    = render @log

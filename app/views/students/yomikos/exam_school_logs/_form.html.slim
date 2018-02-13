@@ -1,0 +1,43 @@
+.form-section
+  = f.label :exam_school
+  = f.text_field :exam_school, placeholder: '例：早稲田大学教育学部', disabled: current_user.teacher?
+
+.form-section
+  div
+    = f.label :exam_year
+
+  div style="display: table;"
+    .selectbox.selectbox--inline
+      = f.select :exam_year, Time.zone.now.year..(Time.zone.now.year+4), {}, disabled: current_user.teacher?
+    span style="display: table-cell; vertical-align: middle;" 年
+
+    .selectbox.selectbox--inline
+      = f.select :exam_month, (1..12).map { |i| [i, i] }, { prompt: '------' }, disabled: current_user.teacher?
+    span style="display: table-cell; vertical-align: middle;" 月
+
+    .selectbox.selectbox--inline
+      = f.select :exam_day, (1..31).map { |i| [i, i] }, { prompt: '------' }, disabled: current_user.teacher?
+    span style="display: table-cell; vertical-align: middle;" 日
+
+.form-section
+  div
+    = f.label :announce_year
+
+  div style="display: table;"
+    .selectbox.selectbox--inline
+      = f.select :announce_year, Time.zone.now.year..(Time.zone.now.year+4), {}, disabled: current_user.teacher?
+    span style="display: table-cell; vertical-align: middle;" 年
+
+    .selectbox.selectbox--inline
+      = f.select :announce_month, (1..12).map { |i| [i, i] }, { prompt: '------' }, disabled: current_user.teacher?
+    span style="display: table-cell; vertical-align: middle;" 月
+
+    .selectbox.selectbox--inline
+      = f.select :announce_day, (1..31).map { |i| [i, i] }, { prompt: '------' }, disabled: current_user.teacher?
+    span style="display: table-cell; vertical-align: middle;" 日
+
+- if current_user.teacher?
+  = f.hidden_field :teacher_id, value: current_user.id
+  .form-section
+    = f.label :result
+    = f.text_field :result

@@ -1,0 +1,36 @@
+.page
+  .page__header
+    = link_to "生徒名: #{@student.nickname} (#{@student.id})", @student
+    br
+    = link_to "担当サポーター名： #{@form.teacher.nickname}", @form.teacher
+
+  .page__body
+    .tutor_form.tutor_log
+      .log_items
+        - @item_master.each do |item_master|
+          .log_item
+            .log_item__title.log_item__title--not_info
+              = item_master.title
+
+            - if log = TutorLogItem.where(tutor_log_id: @log_id, tutor_log_item_master: item_master.id).first
+              = simple_format(h(log.content))
+            - else
+              | -
+
+      .margin-bottom-40px
+
+      = link_to '担当サポーターにメッセージを送る', new_user_message_path(@form.teacher, from: 'tutor'), class: 'button button--success full'
+
+      .margin-bottom-20px
+
+      h4 ※ サポーターとは？
+      p style="color: #555;"
+        | 入会から１ヶ月間、『生徒がセンプレサイクルを自分でまわせるようになること』をゴールにして、生徒に対してサイクルの回し方を指導してくれます。60分のマンツーマン指導を4回、さらに学びログのチェックならびにいいね！やコメントも、センセイと一緒になってサポートしてくれます！
+        br
+        | サポーターとセンセイとがしっかり連携することで、より良い成果を出すことができると思いますので、ぜひセンセイからサポーターへ、ガイダンスへの御礼や感想、コメントを書いて、チーム一丸となって生徒をサポートしていきましょう！
+
+
+    .tutor_logs
+      = render 'tutor_log'
+
+    .clearfix

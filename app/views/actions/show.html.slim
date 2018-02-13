@@ -1,0 +1,63 @@
+.page
+  .page__body
+    .panel.shadow
+      .panel__header
+        | 直近1ヶ月の指導アクションデータ一覧
+
+      .panel__body.scroll
+        table
+          thead
+            tr
+              th colspan = 4
+              th colspan = 5
+                | 担当生徒のログへの
+              th colspan = 4
+                | 担当生徒の
+              th
+
+            tr
+              th colspan = 2
+              th センセイ名
+              th 担当数
+              th colspan = 2
+                | リアクション率
+              th コメント頻度
+              th colspan = 2
+                | いいね率
+              th colspan = 2
+                | 学びログ率
+              th colspan = 2
+                | 週レポ率
+              th マナビバへのデイリーコメント頻度
+
+          tbody
+            - @teachers.each_with_index do |teacher, index|
+              tr
+                td
+                  = index
+                td
+                  =
+                td
+                  = teacher.nickname
+                td
+                  = teacher.coaching_senpre_students.count
+                td
+                  = teacher.fact.action_rate(1.month.ago...Time.now).to_s(:percent)
+                td
+                  = teacher.fact.action_rate(1.month.ago...Time.now).to_s(:fraction)
+                td
+                  = teacher.fact.comment_frequency(1.month.ago...Time.now)
+                td
+                  = teacher.fact.like_rate(1.month.ago...Time.now).to_s(:percent)
+                td
+                  = teacher.fact.like_rate(1.month.ago...Time.now).to_s(:fraction)
+                td
+                  = teacher.fact.log_rate_of_coaching_students(1.month.ago...Time.now).to_s(:percent)
+                td
+                  = teacher.fact.log_rate_of_coaching_students(1.month.ago...Time.now).to_s(:fraction)
+                td
+                  = teacher.fact.report_rate_of_coaching_students(1.month.ago...Time.now).to_s(:percent)
+                td
+                  = teacher.fact.report_rate_of_coaching_students(1.month.ago...Time.now).to_s(:fraction)
+                td
+                  = teacher.fact.daily_comment_frequency(1.month.ago...Time.now)

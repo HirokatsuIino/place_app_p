@@ -1,0 +1,354 @@
+.estory
+  @include e(header)
+    width: 100%
+    padding: 20px 10px
+    margin-bottom: 20px
+    color: white
+    background-color: #1AAF54
+
+    h1
+      font-size: 12px
+      text-align: center
+
+      .emphasis
+        font-size: 18px
+
+    h2
+      font-size: 48px
+      text-align: center
+      margin-bottom: 0
+
+      .emphasis
+        color: red
+
+    h3
+      font-size: 16px
+      text-align: center
+
+    h4
+      font-size: 22px
+
+    .period
+      background-color: #A7CB8E
+      text-align: center
+      font-weight: bold
+      color: black
+      padding: 10px 0
+      font-size: 18px
+      margin-top: 10px
+      border-radius: 3px
+
+    .circle
+      width: 100px
+      height: 100px
+      border-radius: 50%
+      text-align: center
+      background: #FDBF2D
+      position: relative
+
+      .circle-wrapper
+        display: table
+        height: 100%
+        width: 100%
+
+        h4
+          display: table-cell
+          vertical-align: middle
+          text-align: center
+
+  @include e(content)
+    h2
+      font-size: 20px
+      border-left: solid 5px #1AAF54
+      border-bottom: solid 1px black
+      display: inline-block
+      margin: 20px 0 10px 10px
+      padding-left: 10px
+      padding-right: 10px
+
+    p
+      padding: 0 10px
+
+    @include e(course)
+      border: 4px solid #1AAF54
+      margin: 10px 20px 40px
+      padding: 10px
+      line-height: 2.0em
+
+      ol
+        padding-left: 30px
+        list-style-type: decimal
+
+        li
+          color: #1AAF54
+          font-size: 20px
+          font-weight: bold
+
+          ul
+            li
+              font-weight: normal
+              font-size: 16px
+              color: black
+              list-style-type: disc
+
+              .emphasis
+                color: red
+
+    @include e(profile)
+      border: 3px solid #00AB6B
+      padding: 10px
+      margin: 0px 10px 30px
+
+      @include e(text)
+        p
+          font-size: 11px
+          margin-bottom: 10px
+
+          &:last-child
+            margin-bottom: 0
+
+          a
+            text-decoration: underline
+
+        h4
+          font-size: 14px
+
+      @include e(image)
+        float: left
+        margin-right: 10px
+        margin-bottom: 30px
+
+        img
+          width: 125px
+          height: 125px
+
+        p
+          text-align: center
+          font-weight: bold
+
+    @include e(voice)
+      color: $white-color
+      background-color: #ffffff
+      padding: 0px 10px 20px
+      text-align: center
+
+      h2
+        text-align: center
+        font-size: 20px
+        font-weight: bold
+        border: none
+        border-bottom: 3px solid $white-color
+
+      p
+        font-size: 15px
+
+      @include e(example)
+        font-size: 12px
+        text-align: left
+        color: #474747
+        background-color: $white-color
+        border-radius: 11px
+        background-clip: padding-box
+        margin: 10px 5px 10px
+        padding: 8px 10px 6px
+        line-height: 120%
+        border: solid 2px #1baf54
+
+        @include e(image)
+          float: left
+          margin-top: 10px
+          
+      @include e(example-interview)
+        text-align: left
+        color: $black-color
+        background-color: $white-color
+        border-radius: 11px
+        background-clip: padding-box
+        margin: 10px 5px 10px
+        padding: 8px 10px 6px
+        line-height: 120%
+
+        
+        @include e(quote)
+          -webkit-transform: translate(0%, 110%)
+          -moz-transform: translate(0%, 110%)
+          -ms-transform: translate(0%, 110%)
+          -o-transform: translate(0%, 110%)
+          transform: translate(0%, 110%)
+          
+        @include e(title)
+          font-size: 12px
+          padding-left: 18px
+          margin-bottom: 3px
+          margin-top: 21px
+ 
+        @include e(info)
+          font-size: 13px
+          color: #0C5CA4
+          padding-left: 20px
+
+        @include e(image)
+          float: left
+          margin-top: 10px
+
+        @include e(content)
+          font-size: 13px
+
+      @include e(interview-block)
+        color: $black-color
+        font-size: 12px
+        text-align: left
+        margin: 10px 10px 0
+        padding-top: 8px
+        padding-bottom: 8px
+        padding-left: 30px
+        border: 1px solid $white-color
+        border-radius: 5px
+        
+      @include e(user-interview)
+        color: #000000
+        font-size: 16px
+        text-align: left
+        margin: 0px 10px 0px
+        padding-bottom: 30px
+    
+      @include e(read-more)
+        color: $white-color
+        font-size: 16px
+        text-align: center
+        margin: 15px 5px 0
+        padding-top: 8px
+        padding-bottom: 8px
+        border: 1px solid $white-color
+        border-radius: 5px
+
+      @include e(interview)
+        position: relative
+        padding-bottom: 56.25%
+        padding-top: 30px
+        height: 0
+        overflow: hidden
+
+        iframe
+          position: absolute
+          top: 0
+          left: 0
+          width: 100%
+          height: 100%
+
+    @include e(flow)
+      padding-left: 10px
+
+      p
+        font-size: 12px
+
+      @include e(step)
+        text-align: center
+
+      ul
+        list-style-type: none
+        margin: 10px 0
+        font-size: 12px
+
+        li
+          height: 100px
+          float: left
+          width: 23%
+          color: white
+          padding: 10px
+          position: relative
+
+      .first-step
+        background-color: #BED7ED
+        z-index: 10
+        // text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.6)
+
+        &:before
+          content: ''
+          position: absolute
+          left: 100%
+          top: 0
+          border-top: 50px solid transparent
+          border-bottom: 50px solid transparent
+          border-left: 25px solid #BED7ED
+
+      .second-step
+        background-color: #9EC4E4
+        z-index: 9
+        padding-left: 20px
+
+        &:before
+          content: ''
+          position: absolute
+          left: 100%
+          top: 0
+          border-top: 50px solid transparent
+          border-bottom: 50px solid transparent
+          border-left: 25px solid #9EC4E4
+
+      .third-step
+        background-color: #5E9CD3
+        z-index: 8
+        padding-left: 30px
+        font-size: 9px
+
+        &:before
+          content: ''
+          position: absolute
+          left: 100%
+          top: 0
+          border-top: 50px solid transparent
+          border-bottom: 50px solid transparent
+          border-left: 25px solid #5E9CD3
+
+      .forth-step
+        background-color: #3377B3
+        z-index: 7
+        padding-left: 30px
+        font-size: 10px
+
+        &:before
+          content: ''
+          position: absolute
+          left: 100%
+          top: 0
+          border-top: 50px solid transparent
+          border-bottom: 50px solid transparent
+          border-left: 25px solid #3377B3
+
+    @include e(link)
+      text-align: center
+      
+.review
+  border-radius: 10px
+  padding: 30px 0 30px
+
+  @include e(header)
+    width: 60px
+    margin-right: 10px
+    float: left
+
+    img
+      width: 70px
+
+  @include e(reviewer)
+    margin-bottom: 30px
+
+    @include e(name)
+      color: $gray-color-dark
+      font-weight: bold
+      font-size: 16px
+      margin-bottom: 10px
+      padding-left: 90px
+
+    @include e(info)
+      font-size: 13px
+      color: $gray-color-light
+      font-weight: bold
+      padding-left: 90px
+
+  @include e(content)
+    font-size: 14px
+    color: $gray-color-light
+    line-height: 1.8em
+    

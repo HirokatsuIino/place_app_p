@@ -1,0 +1,9 @@
+li
+  = link_to user_teacher_log_path(@user, teacher_log) do
+    = attachment_image_tag teacher_log.teacher, :image, :fill, 64, 64, fallback: 'brand-logo.jpg'
+
+    .list_view-container
+      .list_view-content
+        p= truncate(teacher_log.log_content, length: 64)
+      .list_view-content
+        p= truncate(teacher_log.saved_content, length: 64)

@@ -1,0 +1,14 @@
+ja:
+  activemodel:
+    models:
+      inquiry: お問い合わせ
+      email_form: メールフォーム
+    attributes:
+      inquiry:
+        name: お名前
+        subject: ご用件
+        email: メールアドレス
+        message: 内容
+      email_form:
+        title: タイトル
+        content: 内容

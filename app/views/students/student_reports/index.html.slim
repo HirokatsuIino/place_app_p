@@ -1,0 +1,11 @@
+.page
+  .page__header
+    | 週間レポート一覧
+
+  .page__body
+    - if current_user == @student
+      = link_to '未作成の週間レポートを書く', student_past_lessons_path(@student), class: 'button button--success full'
+
+    .margin-bottom-10px
+
+    = render partial: 'report', collection: @reports

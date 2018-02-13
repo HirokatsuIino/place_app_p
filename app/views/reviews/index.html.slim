@@ -1,0 +1,11 @@
+.page
+  .page__header
+    .front
+      .about.center-align
+        h2.bold style="display: inline; padding: 0 5px 4px; color: #3D8E52;"
+          | 無料体験生の声
+
+  .page__body
+    .tableview
+      = render partial: 'review', collection: @reviews
+

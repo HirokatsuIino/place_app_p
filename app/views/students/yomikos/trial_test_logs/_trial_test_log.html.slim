@@ -1,0 +1,48 @@
+- if @unread_trial_test_logs && @unread_trial_test_logs.include?(trial_test_log.id)
+  h2.red 未読
+
+h3 模試実施(予定)日
+p= simple_format(h(trial_test_log.season_jp))
+
+.margin-bottom-30px
+
+h3 模試名
+p= simple_format(h(trial_test_log.name))
+
+.margin-bottom-30px
+
+h3 形態
+p= simple_format(h(trial_test_log.test_type_jp))
+
+.margin-bottom-30px
+
+h3 自己採点
+p= simple_format(h(trial_test_log.self_grading))
+
+.margin-bottom-30px
+
+h3 総合偏差値
+p= simple_format(h(trial_test_log.total_deviation_value))
+
+.margin-bottom-30px
+
+h3 受験科目毎の偏差値
+p= simple_format(h(trial_test_log.each_deviation_value))
+
+.margin-bottom-30px
+
+h3 判定
+p= simple_format(h(trial_test_log.judgment))
+
+.margin-bottom-30px
+
+h3 感想
+p= simple_format(h(trial_test_log.impression))
+
+- if action_name == 'index'
+  .margin-bottom-20px
+
+  .divider
+
+
+  .margin-bottom-20px

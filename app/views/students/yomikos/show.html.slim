@@ -1,0 +1,31 @@
+.page
+  .page__header #{@student.nickname}さんのヨミ校情報
+
+  .page__body
+    h3 第一志望校
+    p= simple_format(h(@yomiko.first_choice))
+
+    .margin-bottom-30px
+
+    h3 ギリ校
+    p= simple_format(h(@yomiko.challenge))
+
+    .margin-bottom-30px
+
+    h3 ヨミ校
+    p= simple_format(h(@yomiko.yomiko))
+
+    .margin-bottom-30px
+
+    h3 すべり止め校
+    p= simple_format(h(@yomiko.second_choice))
+
+    .margin-bottom-30px
+
+    h3 現役絶対主義なのか最悪浪人可能か（その場合の条件など）
+    p= simple_format(h(@yomiko.condition))
+
+    .margin-bottom-30px
+
+    h3 メモ
+    p= simple_format(h(@yomiko.memo))

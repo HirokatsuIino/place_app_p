@@ -1,0 +1,14 @@
+.page
+  .page__header 前面談ログを記入する
+  .page__body.two_pane
+    .left_pane
+      = form_for @log, url: student_interview_logs_path(@student, @log) do |f|
+        = f.fields_for :interview_log_item, @log.build_interview_log_item do |i|
+          = render 'form', f: f, i: i
+        .margin-bottom-20px
+        = f.submit '保存する', class: 'button button--success full', data: { disable_with: '保存中...' }
+
+    .right_pane.clearfix
+      = render 'sub'
+
+    .clearfix

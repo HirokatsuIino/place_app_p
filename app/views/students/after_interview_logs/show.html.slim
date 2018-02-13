@@ -1,0 +1,18 @@
+.page
+  .page__header
+    | 後面談ログ
+
+  .page__body
+    - if staff_signed_in?
+      = link_to '編集する', edit_student_after_interview_log_path(@interview.student, @interview), class: 'button button--success full', style: 'margin-left: 10px;'
+
+      .margin-bottom-20px
+
+    .post__image
+      = attachment_image_tag @interview.student, :image, :fill, 64, 64, fallback: 'brand-logo.jpg', class: 'circle'
+
+    .post__study-content.margin-bottom-10px
+      = simple_format(h(@interview.content))
+
+    .post__study-create.margin-bottom-10px
+      | #{l(@interview.created_at)}

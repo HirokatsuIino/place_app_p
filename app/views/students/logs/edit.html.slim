@@ -1,0 +1,48 @@
+.page
+  .page__header
+    | 学びログを修正する
+
+  .page__body
+    = form_for edit_student_log_path(@log.student, @log) do |f|
+      - set_alert :warning, @log.errors.full_messages
+
+      .form-section
+        = f.label       'ログ日付', class: 'block'
+        = f.date_select :day, { use_month_numbers: true, start_year: 2015, end_year: (Time.now.year + 1), date_separator: '/ ' }, { class: 'selectbox selectbox--small selectbox--inline' }
+
+      .form-section
+        = f.label :hour, class: 'block' do
+          | 学習時間
+          span.bold.navy （必須）
+        - hour_and_minute = @log.study_time.divmod(60)
+        = select_tag :hour, options_for_select(0..23, :selected => hour_and_minute[0]), { include_blank: '-', class: 'selectbox selectbox--small selectbox--inline' }
+        = f.label '時間'
+
+        = select_tag :minute, options_for_select(0..59, :selected => hour_and_minute[1]), { include_blank: '-', class: 'selectbox selectbox--small selectbox--inline' }
+        = f.label '分'
+
+        .grey_label
+          | ▶️💡センプレが考える学習時間とは...「集中して、主体的に取り組めた学習に関わる時間のすべて」
+        .grey_label
+          | (センプレの指導、学校や塾などで主体的に受けられた授業、学びログを書くための振り返り時間も含む)
+
+      .form-section
+        = f.label :content, class: 'block' do
+          | 学習内容
+          span.bold.navy （必須）
+        = f.text_area :content, rows: 6, data: { autoresize: '' }
+
+      .form-section
+        = f.label :comment, class: 'block' do
+          | 今日の学び、発見、ふりかえり
+          span.bold.navy （必須）
+        = f.text_area :comment, rows: 8, data: { autoresize: '' }
+
+      .form-section
+        - if @log.images.present?
+          = f.label :images, '画像'
+          .list_view-content
+            - @log.images.each do |image|
+              = attachment_image_tag image, :image, :fill, 64, 64
+
+      = f.submit '投稿する', class: 'button button--success full', data: { disable_with: '投稿中...' }

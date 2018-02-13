@@ -1,0 +1,13 @@
+.page
+  .page__header #{@student.nickname}さんの#{@log.prev_parent_log_number+1}回目保護者面談ログを編集する
+
+  .page__body
+    .two_pane
+      .left_pane
+        = form_for [@student, @log] do |f|
+          = render 'form', f: f
+
+      .right_pane
+        = render 'students/parent_logs/document'
+
+      .clearfix

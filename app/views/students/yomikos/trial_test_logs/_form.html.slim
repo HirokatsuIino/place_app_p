@@ -1,0 +1,144 @@
+- if params[:result].blank? && (params[:trial_test_log].nil? || params[:trial_test_log][:result].blank?)
+  .form-section
+    div
+      = f.label :year
+      - if ship_it?
+        span &nbsp;✏️
+
+    div style="display: table;"
+      .selectbox.selectbox--inline
+        = f.select :year, (Time.zone.now.year-1)..(Time.zone.now.year+3), {}, disabled: params[:result].present?
+      span style="display: table-cell; vertical-align: middle;" 年
+
+      .selectbox.selectbox--inline
+        = f.select :month, (1..12).map { |i| [i, i] }, {}, disabled: params[:result].present?
+      span style="display: table-cell; vertical-align: middle;" 月
+
+      .selectbox.selectbox--inline
+        = f.select :day, (1..31).map { |i| [i, i] }, { prompt: '------' }, disabled: params[:result].present?
+      span style="display: table-cell; vertical-align: middle;" 日
+
+  .form-section
+    = f.label :name
+    - if ship_it?
+      span &nbsp;✏️
+    = f.text_field :name, placeholder: '例：進研模試', disabled: params[:result].present?
+
+    = f.auto_save_field :name
+
+  .form-section
+    = f.label :test_type
+    - if ship_it?
+      span &nbsp;✏️
+    = f.radio_button :test_type, :mark, disabled: params[:result].present?
+    = f.label :test_type_mark, 'マーク'
+    = f.radio_button :test_type, :writing, disabled: params[:result].present?
+    = f.label :test_type_writing, '筆記'
+
+  - if (action_name == 'edit' || action_name == 'update')
+    = f.hidden_field :carried_out, value: true
+
+    .mpargin-bottom-20px
+
+    .divider
+
+    .margin-bottom-20px
+
+    .form-section
+      = f.label :self_grading
+      = f.text_area :self_grading, rows: 3, data: { autoresize: '' }, placeholder: "例：\n英語：150/200点\n現代文：68/100点\n古文：48/50点\n漢文：35/50点\n日本史：75/100点", disabled: params[:result].present?
+
+    .margin-bottom-20px
+
+    .form-section
+      = check_box_tag :input_result
+      = label_tag :input_result, '結果も合わせて入力する'
+
+    #result style="display: none;"
+      h3 模試結果
+
+      .margin-bottom-20px
+
+      .form-section
+        = f.label :total_deviation_value
+        = f.text_field :total_deviation_value
+        = f.auto_save_field :total_deviation_value
+
+      .form-section
+        = f.label :each_deviation_value
+        = f.text_area :each_deviation_value, rows: 3, placeholder: '例：国：52.1　英：47.4　世界史：55.0'
+        = f.auto_save_field :each_deviation_value
+
+      .form-section
+        = f.label :judgment
+        = f.text_field :judgment, placeholder: '例：E'
+        = f.auto_save_field :judgment
+
+      .margin-bottom-20px
+
+    .divider
+
+    .margin-bottom-20px
+
+    .form-section
+      = f.label :impression
+      - if ship_it?
+        span &nbsp;✏️
+      = f.text_area :impression, rows: 3, data: { autoresize: '' }, placeholder: '例：現代文は評論に時間を使いすぎて、小説の方に８分しか時間を使えなかった。古文漢文は授業以外でまだ手を付けていないので、ほぼ運だった。しょうがない。英語は文法問題はネクステを何度もやって見慣れたので、点がしっかり取れた。けど、長文は演習がまだ甘くて全体的に読み切れない。ただ、グラフの問題は何度もやったので正確に読めた。世界史は、この模試の前に中国史の一問一答をやっていたのでそこは取れると思っていたけど、思った以上に「流れ」が問われてかなり迷った問題が多かった。他の問題は基礎的な語句のところもあやふやで、どうしても運まかせになった。', disabled: params[:result].present?
+
+      = f.auto_save_field :impression
+
+    .margin-bottom-20px
+
+- else
+  - if (action_name == 'edit' || action_name == 'update')
+    = f.hidden_field :result, value: true
+
+    .form-section
+      = f.label :total_deviation_value
+      = f.text_field :total_deviation_value
+      = f.auto_save_field :total_deviation_value
+
+    .form-section
+      = f.label :each_deviation_value
+      = f.text_area :each_deviation_value, rows: 3, placeholder: '例：国：52.1　英：47.4　世界史：55.0'
+      = f.auto_save_field :each_deviation_value
+
+    .form-section
+      = f.label :judgment
+      = f.text_field :judgment, placeholder: '例：E'
+      = f.auto_save_field :judgment
+
+    .margin-bottom-30px
+
+    h4 style="color: #6d6d6d;" 模試実施(予定)日
+    p= simple_format(h(f.object.season_jp))
+
+    .margin-bottom-30px
+
+    h4 style="color: #6d6d6d;" 模試名
+    p= simple_format(h(f.object.name))
+
+    .margin-bottom-30px
+
+    h4 style="color: #6d6d6d;" 形態
+    p= simple_format(h(f.object.test_type_jp))
+
+    .margin-bottom-30px
+
+    h4 style="color: #6d6d6d;" 自己採点
+    p= simple_format(h(f.object.self_grading))
+
+    .margin-bottom-30px
+
+    h4 style="color: #6d6d6d;" 感想
+    p= simple_format(h(f.object.impression))
+
+    .margin-bottom-20px
+
+javascript:
+  $(document).on('ready page:load', function() {
+    $('input[name="input_result"]').change(function() {
+      $('#result').toggle()
+    })
+  })

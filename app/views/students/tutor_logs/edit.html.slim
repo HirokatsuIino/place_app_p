@@ -1,0 +1,19 @@
+.page
+  .page__header
+    = link_to "生徒名: #{@student.nickname} (#{@student.id})", @student
+    br
+    = link_to "担当サポーター名： #{@form.teacher.nickname}", @form.teacher
+
+  .page__body
+    .tutor_form
+      = form_for @form, url: { controller: 'students/tutor_logs', action: :update, student_id: @student.id, number: @number }, method: :patch do |f|
+        = render 'form', f: f
+
+        .margin-bottom-30px
+
+        = render 'teacher_log_level'
+
+    .tutor_logs
+      = render 'tutor_log'
+
+    .clearfix

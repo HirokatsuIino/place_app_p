@@ -1,0 +1,28 @@
+.page
+  .page__header
+    | 過去問ログを入力する
+    - if ship_it?
+      br
+      span.navy style="font-size: 14px; font-weight: bold;"
+        | ✏️ の部分は、本日の学びログとしてマナビバに公開、マイページに保存されます。
+
+  .page__body
+    = link_to '#voice__interview' do
+      h4 style="text-align: center; color: #009944; text-decoration:underline;"
+        | 【必見】生徒限定動画！『過去問ログ活用法』はこちら ▶︎
+
+    .margin-bottom-20px
+
+    = form_for [@student, :yomikos, @log] do |f|
+      = render 'form', f: f
+      = f.submit '作成する', data: { disable_with: '保存中...' }, class: 'button button--success full'
+
+      .margin-bottom-40px
+
+      h3 style="text-align: center; color: #009944;"
+        | ⬇️【必見】生徒限定！！過去問ログの活用法 ⬇️
+
+      .margin-bottom-20px
+
+      .voice__interview#voice__interview
+        = content_tag(:iframe, '', src: "https://www.youtube.com/embed/OCVHEfeur88?rel=0&amp;controls=0&amp;showinfo=0", frameborder: "0", allowfullscreen: true)

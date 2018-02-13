@@ -1,0 +1,314 @@
+ja:
+  activemodel:
+    models:
+      inquiry: お問い合わせ
+    attributes:
+      inquiry:
+        name: お名前
+        subject: ご用件
+        email: メールアドレス
+        message: 内容
+  activerecord:
+    attributes:
+      enum:
+        trial_test_log:
+          test_type:
+            mark: マーク
+            writing: 記述
+        user:
+          permission:
+            granted: 許可
+            refused: 禁止
+      parent_greeting_log:
+        working_reason: センプレで働いている理由(自身の受験経験を絡めて話す)
+        coaching_reason: 担当になった理由
+        experience: ほかの生徒の指導経験
+        student_impression: 生徒に対しての客観的な印象や認識の伝達
+        about_student: 生徒に関して、保護者より伝えておきたいこと
+        announce: センプレ相談窓口についてのアナウンス
+        team: 保護者含めチームとしてやっていきたい意思の伝達
+        about_interview: 今後の定期面談の依頼
+        parent: 保護者対応
+        relation: 親子関係の良好化
+        lesson: 指導の改善
+        prevent_withdrawal: 退会防止
+        exam_schools: 受験校の共有
+        mindset: マインドセット
+      parent_log:
+        recent_news: 最近(直近1or3ヶ月)でのNews
+        keep: Keep(良かった点の共有)
+        problem: Problem(課題点の共有)
+        try: Try(受験校の共有や今後の目標・展望の共有)
+        question: 懸念点、疑問点の確認・解消
+        last_greeting: 今後の定期面談依頼と締めの挨拶
+        comment: 備考
+        parent: 保護者対応
+        relation: 親子関係の良好化
+        lesson: 指導の改善
+        prevent_withdrawal: 退会防止
+        exam_schools: 受験校の共有
+        mindset: マインドセット
+      follow_memo:
+        content: 内容
+      kakomon_log:
+        year: 過去問実施(予定)日
+        month: 月
+        day: 日にち
+        college: 大学名学部
+        questions_year: 年度
+        subject: 教科
+        correct: 正解数(問/問)
+        point: 点数(点/点)
+        big_questions_correct: 大問ごとの正解数(問/問)
+        impression: 感想
+      exam_school_log:
+        exam_school: 大学名学部
+        exam_year: 試験日程
+        exam_month: 月
+        exam_day: 日にち
+        announce_year: 合格発表日
+        announce_month: 月
+        announce_day: 日にち
+        result: 受験結果
+      trial_test_log:
+        year: 模試実施(予定)日
+        month: 月
+        day: 日にち
+        name: 模試名
+        test_type: 形態
+        total_deviation_value: 総合偏差値
+        each_deviation_value: 受験科目毎の偏差値
+        judgment: 判定
+        impression: 感想
+        self_grading: 自己採点
+      yomiko:
+        challenge: ギリ校
+        yomiko: ヨミ校
+        first_choice: 第一志望校
+        second_choice: すべり止め校
+        condition: 現役絶対主義なのか最悪浪人可能か（その場合の条件など）
+        memo: メモ
+      text_use:
+        content: 内容
+      interview_log_item:
+        how_to_know: 最初にセンプレを知ったのはいつ・何を見て・聞いて
+        why: 今回問い合わせしようと思ったのはなぜ・きっかけ
+        expectation: センプレはどんな所と思って、何を解決してくれ・何を期待して、問い合わせしてくれたか
+        family_preferred_school: 志望校に対しての意見
+        family_study: 勉強に対しての口出し度合い
+        family_times: 家族の中では何度目の受験か（兄弟の有無と学年、親の大学歴）
+        comment: 所感（どんな印象の子で、どう持っていけば良いと思うか）
+        problem: 懸念点（体験や入会で懸念材料となりそうで抑えておきたいこと）
+        transmission: センセイへの伝達事項（体験をどんな流れで、どういういうことを特に強調してほしいか）
+        memo: メモ
+      student_profile_item:
+        preferred_school: '志望校/学部'
+        preferred_school_reason: '志望校を決めた理由'
+        school: '学校名（浪人生は卒業校）'
+        grade: '現在の学年（浪人生は何浪目か）'
+        study_type: '文系or理系'
+        hobby: '趣味・好きなこと'
+        club: '部活やバイト'
+        learning: '塾や習い事'
+        goal: '現在の目標'
+        problem: '解決したい悩み・課題'
+        subjects: '受験で使う科目（すべて記入）'
+        favorite_subjects: '得意科目'
+        dislike_subjects: '苦手科目'
+        test: '最新の模試情報 （例：全統マーク模試 6月：英語55 国語:50 日本史45）※模試を受けていない場合は、それに準ずる情報を記入'
+        comment: 'その他（伝えたいことなどあれば）'
+        level: '学校内の学力レベル'
+        level_5: '上'
+        level_4: '中の上'
+        level_3: '中の中'
+        level_2: '中の下'
+        level_1: '下'
+      teacher_edit_student_profile_item:
+        preferred_school: '志望校/学部'
+        preferred_school_reason: '志望校を決めた理由'
+        school: '学校名（浪人生は卒業校）'
+        grade: '現在の学年'
+        study_type: '文系or理系'
+        hobby: '趣味・好きなこと'
+        club: '部活やバイト'
+        learning: '塾や習い事'
+        goal: '現在の目標'
+        problem: '解決したい悩み・課題'
+        subjects: '受験で使う科目（すべて記入）'
+        favorite_subjects: '得意科目'
+        dislike_subjects: '苦手科目'
+        test: '最新の模試について
+        （例：全統マーク模試6月:英語55 国語:50 日本史45）
+        （模試を受けていない場合は、それに準ずる情報を記入）'
+        comment: 'その他（伝えたいことなどあれば）'
+        level: '学校内の学力レベル'
+        level_5: '上'
+        level_4: '中の上'
+        level_3: '中の中'
+        level_2: '中の下'
+        level_1: '下'
+      experience_note:
+        user_id: ユーザー名
+        period: 期間
+        situation: 状況
+        situation_label: センプレを始める前の自分はどんな状況だった?
+        situation_display: 始める前の自分について
+        reason: 経緯・きっかけ
+        reason_label: センプレに入会しようと思った経緯・きっかけは?
+        reason_display: センセイプレイスを選んだ理由
+        change: "変化"
+        change_label: "%{period}ヶ月経っての変化（例：勉強への考え方、勉強のやり方、学習/生活習慣、学習面での変化、周囲の反応など）"
+        change_display: "%{period}ヶ月たってみて"
+        ambition: 良かったこと、抱負
+        ambition_label: センプレに入会して良かったこと、これからの抱負!
+        ambition_display: 良かったこと、これからの抱負!
+      message:
+        content: 内容
+      student_log:
+        day: ログ日付
+        study_time: 学習時間
+        hour: 時間
+        minute: 分
+        content: 学習内容
+        comment: 今日の学び、発見、ふりかえり
+        twitter_comment: 今日のひとこと
+        twitter_post: ツイッター投稿
+      student_report:
+        content: 内容
+        date: 日付
+        review: 自己評価
+        review_1: 1 (まったくできていない)
+        review_2: 2 (あまりできていない)
+        review_3: 3 (一歩届かなかった)
+        review_4: 4 (だいたいプラン通りできた)
+        review_5: 5 (プラン通りできた)
+        review_6: 6 (プラン以上にできた)
+        keep: 先週の良かったこと、続けたいこと
+        problem: 先週の課題点
+        trying: 次の一週間の目標＆プラン
+        topic: 指導で聞きたいこと、話したいこと
+      student_profile:
+        free_content: 自由記入欄
+      teacher_note:
+        title: タイトル
+        content: 内容
+      teacher_post:
+        content: 内容
+      teacher_log:
+        log_content: 指導ログ
+        saved_content: 保存BOX
+        self_score: 指導の充実度（自己評価）
+        published_at: 公開する
+      teacher_review:
+        content: ︎体験指導の学び（必須・公開）
+        rate: 総合評価　　
+        rate1: 期待通り　　
+        rate2: わかりやすさ
+        rate3: やる気になる
+        rate4: ためになる　
+        rate5: たのしさ　　
+        option_and_private: （非公開）
+        message_for_reply: "%{introduced}さんの体験指導の学び"
+        message_for_you: "%{introduced}さんからあなたへのメッセージ"
+        message_to_teacher: センセイへのメッセージ（任意・非公開）
+        message_from_teacher_in_return: 体験指導を行った生徒への激励メッセージ
+      payforward_message:
+        content: 紹介（ペイフォワード）してくれたお友だちへのメッセージ（任意・非公開）
+        to_introducer: 紹介（ペイフォワード）してくれたお友だちへのメッセージ（任意・非公開）
+        to_introduced: 紹介（ペイフォワード）したお友だちへの激励メッセージ
+        to_introducer_in_return: "%{introduced}さんからあなたへのメッセージ"
+      feedback:
+        content: 内容
+        iphone: デバイスのOS
+        name: お名前
+        email: メールアドレス
+      user:
+        id: ID
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: パスワード（確認）
+        current_password: 現在のパスワード
+        nickname: 名前（ニックネーム）
+        image: プロフィール写真
+        remove_image: 写真を削除する
+        skype_id: スカイプ名
+        senpre_id: ユーザ名
+        phone_number: 電話番号（緊急連絡先）
+        remember_me: 次回から自動的にログイン
+        gender: 性別
+        payforward_id: お友達のPFコード(任意)
+        pf_introducer: お友達のPFコード
+      teacher_setting:
+        fee: 指導料（１コマ：３０分）
+        message: センプレ生への一言メッセージ
+        education: 出身(在籍)大学名
+        grade: 学年
+        name: 氏名（本名）
+        wanted_student: こんな生徒に教えたい
+        p_hometown: 出身地
+        p_hometown_comment: 出身地コメント
+        p_elementary_type: 小学校型
+        p_elementary_name: 小学校名
+        p_elementary_comment: 小学校コメント
+        p_junior_high_type: 中学校型
+        p_junior_high_name: 中学校名
+        p_junior_high_comment: 中学校コメント
+        p_high_school_type: 高校型
+        p_high_school_name: 高校名
+        p_high_school_comment: 高校コメント
+        p_exam: 大学入試
+        p_exam_comment: 大学入試コメント
+        p_education_department: 学部
+        p_education_comment: 大学コメント
+        p_after_graduation: 卒業後
+        p_after_graduation_comment: 卒業後コメント
+        p_now: 現在
+        p_now_comment: 現在コメント
+        subject_1: "国語（現代文）"
+        subject_2: "国語（現・古）"
+        subject_3: "国語（現・古・漢）"
+        subject_4: "数学（1A）"
+        subject_5: "数学（1A,2B）"
+        subject_6: "数学（1A,2B,3C）"
+        subject_7: "英語"
+        subject_8: "日本史"
+        subject_9: "世界史"
+        subject_10: "政治経済"
+        subject_11: "現代社会"
+        subject_12: "倫理政経"
+        subject_13: "倫理"
+        subject_14: "地理"
+        subject_15: "物理"
+        subject_16: "化学"
+        subject_17: "生物"
+        subject_18: "地学"
+        subject_19: "小論文"
+        subject_20: "実技"
+        publish: 公開
+      teacher_setting_target:
+        student_grade: 対象学年
+        exam_type: 生徒タイプ
+      student_setting:
+        nickname: ハンドルネーム
+        skype_id: スカイプ名
+        grade: 学年
+        prefecture: 都道府県
+        self_intro: 自己紹介
+        name: 氏名（本名）
+        parent_email: 保護者のEmailアドレス
+      trial:
+        line_id: ラインID
+      monthly_report:
+        message: センプレからのお知らせ
+      monthly_fee:
+        comment: コメント
+      teacher_profile:
+        university: 大学名
+        department: 学部
+        grade: 学年
+        hometown: 出身地
+        self_introduction: 自己紹介
+        experience_exam: 受験ストーリー
+        subject_exam: 受験科目
+        results_exam: 主な合格校
+        comment_recommender: センセイプレイスから一言

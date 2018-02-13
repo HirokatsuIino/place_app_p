@@ -1,0 +1,20 @@
+tr
+  td
+    = lesson.lesson_type_jp
+  td
+    = link_to lesson.teacher_nickname, lesson.teacher
+  td
+    = lesson.lesson_datetime.to_s(:date) + "(" + lesson.lesson_datetime.to_s(:wday_jp) + ")"
+
+  td
+    = "#{lesson.lesson_start_time.to_s(:time)}"
+    | から
+    = "#{lesson.lesson_end_time.to_s(:time)}"
+    br
+    = "(#{lesson.lesson_total_time}分)"
+
+  td
+    - if lesson.student_report.present?
+      = link_to '編集', edit_student_lesson_student_report_path(@student, lesson, lesson.student_report), class: 'button button--default'
+    - else
+      = link_to '作成', new_student_lesson_student_report_path(@student, lesson), class: 'button button--success'

@@ -1,0 +1,24 @@
+.review
+  .review__header
+    = link_to student_path(review.student) do
+      = attachment_image_tag review.student, :image, :fill, 80, 80, fallback: 'brand-logo.jpg', class: 'circle'
+
+  .review__body
+    .review__reviewer
+      .review__reviewer__name
+        span= link_to "#{review.student.nickname}", student_path(review.student)
+
+      .review__reviewer__info
+        span= render partial: 'setting', locals: { setting: review.student.setting }
+        | &nbsp;
+        span style="font-size: 11px;"
+          = review.created_at.to_s(:date)
+
+    .review__content
+      = simple_format(h(review.content))
+
+    /- if staff_signed_in?
+      .timeline__study-content
+        = link_to("編集する", edit_teacher_review_path(review.teacher, id: review.id), class: 'button button--small')
+.clearfix
+.colored-divider

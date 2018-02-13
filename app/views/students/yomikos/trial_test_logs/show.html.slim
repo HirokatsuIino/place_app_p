@@ -1,0 +1,9 @@
+.page
+  .page__header
+    - if teacher_signed_in?
+      = "#{@student.nickname}さんの模試ログ"
+    - else
+      = "模試ログ"
+
+  .page__body
+    = render @trial_test_log

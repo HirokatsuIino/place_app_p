@@ -1,0 +1,8 @@
+.page
+  .page__header
+    | ヨミ校情報を編集する
+
+  .page__body
+      = form_for [@student, @yomiko] do |f|
+        = render 'form', f: f
+        = f.submit '更新する', class: 'button button--success full'

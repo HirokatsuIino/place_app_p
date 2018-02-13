@@ -1,0 +1,47 @@
+- if @unread_logs && @unread_logs.include?(kakomon_log.id)
+  h2.red 未読
+
+h3 過去問実施(予定)日
+p= simple_format(h(kakomon_log.season_jp))
+
+.margin-bottom-30px
+
+h3 大学名学部
+p= simple_format(h(kakomon_log.college))
+
+.margin-bottom-30px
+
+h3 年度
+p= simple_format(h(kakomon_log.questions_year))
+
+.margin-bottom-30px
+
+h3 教科
+p= simple_format(h(kakomon_log.subject))
+
+.margin-bottom-30px
+
+h3 正解数(問/問)
+p= simple_format(h(kakomon_log.correct))
+
+.margin-bottom-30px
+
+h3 点数(点/点)
+p= simple_format(h(kakomon_log.point))
+
+.margin-bottom-30px
+
+h3 大問ごとの正解数(問/問)
+p= simple_format(h(kakomon_log.big_questions_correct))
+
+.margin-bottom-30px
+
+h3 感想
+p= simple_format(h(kakomon_log.impression))
+
+- if action_name == 'index'
+  .margin-bottom-20px
+
+  .divider
+
+  .margin-bottom-20px
